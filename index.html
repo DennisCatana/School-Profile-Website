@@ -1,540 +1,1101 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
+  <meta name="description" content="Aula Virtual Sección E - Segundo Año">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>SECCIÓN E</title>
-  <link rel="icon" href="assets/images/favicon.png" type="image/png">
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/lightbox.css">
-  <!--
-    
-TemplateMo 557 Grad School
-
-https://templatemo.com/tm-557-grad-school
-
--->
 
   <style>
-    .table {
-      color: white;
-      text-align: center;
+    :root {
+      --gold: #f5a425;
+      --gold-dark: #d48a10;
+      --navy: #0d1b2a;
+      --navy-mid: #1a2e42;
+      --navy-light: #1f3a52;
+      --surface: #162535;
+      --text: #e8edf2;
+      --text-muted: #8fa3b4;
+      --success: #28c76f;
+      --warning: #ff9f43;
+      --danger: #ea5455;
+      --info: #00cfe8;
+      --radius: 10px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.35);
     }
 
-    .table th {
-      background-color: #f5a425;
-      color: white;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      overflow-x: hidden;
     }
 
-    .table td {
-      vertical-align: middle;
-    }
-
-    /* Todas las tarjetas mismo tamaño */
-    .owl-carousel .item {
-      height: 350px;
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(13,27,42,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,164,37,0.2);
       display: flex;
-      flex-direction: column;
-      background: #fff;
-      border-radius: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 64px;
+    }
+
+    .logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo em { color: var(--gold); font-style: normal; }
+
+    nav ul { list-style: none; display: flex; gap: 8px; }
+    nav ul li a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    nav ul li a:hover, nav ul li.active a {
+      color: var(--gold);
+      background: rgba(245,164,37,0.1);
+    }
+
+    /* hamburger */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav {
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        background: rgba(13,27,42,0.98);
+        transform: translateY(-120%);
+        transition: transform 0.3s ease;
+        padding: 16px;
+        border-bottom: 1px solid rgba(245,164,37,0.2);
+      }
+      nav.open { transform: translateY(0); }
+      nav ul { flex-direction: column; gap: 4px; }
+      nav ul li a { display: block; padding: 12px 16px; }
+    }
+
+    /* ── HERO ── */
+    #section1 {
+      position: relative;
+      height: 100vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
 
-    /* Tamaño uniforme imágenes */
-    .owl-carousel .item img {
-      width: 100%;
-      height: 250px;
+    #bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
+      opacity: 0.25;
     }
 
-    /* Contenido inferior */
-    .owl-carousel .down-content {
-      height: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .hero-overlay {
+      position: relative;
       text-align: center;
-      background: #1f272b;
+      padding: 20px;
     }
 
-    /* Texto */
-    .owl-carousel .down-content h4 {
-      color: white;
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245,164,37,0.15);
+      border: 1px solid rgba(245,164,37,0.4);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-overlay h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2.4rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+    .hero-overlay h1 em { color: var(--gold); font-style: normal; }
+
+    .hero-motto {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .btn-hero {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      padding: 14px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-hero:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,164,37,0.4);
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 80px 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-heading {
+      margin-bottom: 40px;
+    }
+    .section-heading h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+    }
+    .section-heading h2 span { color: var(--gold); }
+    .section-heading p {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* ── TABS ── */
+    .tabs-wrapper { background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .tab-nav { display: flex; border-bottom: 1px solid rgba(255,255,255,0.08); overflow-x: auto; }
+    .tab-btn {
+      flex: 1;
+      min-width: 130px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .tab-panel { display: none; padding: 32px; }
+    .tab-panel.active { display: block; }
+
+    /* ── DOC CARDS ── */
+    .doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .doc-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 28px 16px;
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      text-align: center;
+      transition: all 0.25s;
+    }
+    .doc-card:hover {
+      border-color: var(--gold);
+      background: rgba(245,164,37,0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(245,164,37,0.2);
+    }
+    .doc-card i { font-size: 2rem; color: var(--gold); }
+    .doc-card h5 { font-size: 0.85rem; font-weight: 700; margin: 0; }
+    .doc-card p { font-size: 0.75rem; color: var(--text-muted); margin: 0; }
+
+    /* ── ADMINISTRACIÓN ── */
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .role-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+    .role-card:hover { border-color: var(--gold); }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,164,37,0.12);
+      border: 1px solid rgba(245,164,37,0.3);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      width: fit-content;
+    }
+    .role-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .role-card .cadete-name {
+      font-size: 0.88rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .role-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.55;
       margin: 0;
     }
 
-    /* Hover elegante */
-    .owl-carousel .item:hover {
+    .org-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 20px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .org-divider::before, .org-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ── TASKS TABLE ── */
+    .task-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-sm { padding: 6px 12px; font-size: 0.75rem; }
+    .btn-danger { background: var(--danger); color: white; }
+    .btn-danger:hover { filter: brightness(1.1); }
+
+    .table-responsive { overflow-x: auto; border-radius: var(--radius); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      min-width: 540px;
+    }
+    thead th {
+      background: var(--navy-mid);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 2px solid rgba(245,164,37,0.3);
+    }
+    tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.15s;
+    }
+    tbody tr:hover { background: rgba(255,255,255,0.04); }
+    tbody td { padding: 12px 16px; vertical-align: middle; color: var(--text); }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .badge-success { background: rgba(40,199,111,0.15); color: var(--success); }
+    .badge-warning { background: rgba(255,159,67,0.15); color: var(--warning); }
+    .badge-danger  { background: rgba(234,84,85,0.15);  color: var(--danger); }
+    .badge-info    { background: rgba(0,207,232,0.15);  color: var(--info); }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-muted);
+    }
+    .empty-state i { font-size: 3rem; margin-bottom: 12px; color: rgba(255,255,255,0.15); }
+    .empty-state p { font-size: 0.9rem; }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid rgba(245,164,37,0.2);
+      border-radius: 14px;
+      padding: 32px;
+      width: 100%;
+      max-width: 480px;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.25s;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .modal-backdrop.open .modal { transform: scale(1) translateY(0); }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .modal-header h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .modal-close:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+    .form-control {
+      width: 100%;
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus { border-color: var(--gold); }
+    select.form-control option { background: var(--navy-mid); }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* ── SERVICIOS ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card:hover {
       transform: translateY(-5px);
-      transition: 0.3s ease;
+      border-color: var(--gold);
+      box-shadow: 0 12px 32px rgba(245,164,37,0.2);
+    }
+    .service-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+    .service-card .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      background: var(--navy-mid);
+    }
+    .service-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 0;
+    }
+    .service-card span {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+    }
+
+    /* ── CONTACT ── */
+    #section6 { background: var(--surface); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-form .form-control { background: var(--navy-mid); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25d366;
+      color: white;
+      padding: 13px 28px;
+      border-radius: 8px;
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-whatsapp:hover { background: #1ebe59; transform: translateY(-1px); }
+
+    iframe { border-radius: var(--radius); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      background: var(--navy-mid);
+      border: 1px solid rgba(245,164,37,0.3);
+      border-left: 4px solid var(--gold);
+      color: var(--text);
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      z-index: 3000;
+      transform: translateX(120%);
+      transition: transform 0.3s ease;
+      max-width: 320px;
+    }
+    .toast.show { transform: translateX(0); }
+    .toast.success { border-left-color: var(--success); }
+    .toast.danger { border-left-color: var(--danger); }
+
+    /* ── RESPONSIVE TWEAKS ── */
+    @media (max-width: 600px) {
+      .tab-panel { padding: 20px; }
+      .task-toolbar { flex-direction: column; align-items: stretch; }
+      .task-toolbar .btn { justify-content: center; }
     }
   </style>
 </head>
-
 <body>
 
+<!-- ══ HEADER ══ -->
+<header>
+  <a href="#section1" class="logo"><em>Sección E</em> · Segundo Año</a>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav id="main-nav">
+    <ul>
+      <li><a href="#section1">Inicio</a></li>
+      <li><a href="#section2">Varios</a></li>
+      <li><a href="#section4">Servicios</a></li>
+      <li><a href="#section6">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!--header-->
-  <header class="main-header clearfix" role="header">
-    <div class="logo">
-      <a href="#"><em>Seccion E</em> Segundo Año</a>
+<!-- ══ HERO ══ -->
+<section id="section1" class="section" style="padding:0;">
+  <video autoplay muted loop id="bg-video" playsinline>
+    <source src="assets/images/89.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
+    <div class="hero-badge">⭐ Aula Virtual</div>
+    <h1>Sección <em>E</em><br>Segundo Año</h1>
+    <p class="hero-motto">Valor · Disciplina · Lealtad</p>
+    <a href="#section2" class="btn-hero">Iniciar</a>
+  </div>
+</section>
+
+<!-- ══ TABS VARIOS ══ -->
+<section id="section2" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Centro de <span>Recursos</span></h2>
+      <p>Documentos, organización y tareas de la sección</p>
     </div>
-    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
-    <nav id="menu" class="main-nav" role="navigation">
-      <ul class="main-menu">
-        <li><a href="#section1">Home</a></li>
-        <li><a href="#section2">Administración</a></li>
-        <li><a href="#section4">Servicios</a></li>
-        <!-- <li><a href="#section5">Video</a></li> -->
-        <li><a href="#section6">Contactos</a></li>
-        <!-- <li><a href="list_buku.html" class="external">list</a></li> -->
-      </ul>
-    </nav>
-  </header>
 
-  <!-- ***** Main Banner Area Start ***** -->
-  <section class="section main-banner" id="top" data-section="section1">
-    <video autoplay muted loop id="bg-video">
-      <source src="assets/images/89.mp4" type="video/mp4" />
-    </video>
+    <div class="tabs-wrapper">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab(0)">
+          <i class="fas fa-folder-open" style="margin-right:6px"></i> Documentos
+        </button>
+        <button class="tab-btn" onclick="switchTab(1)">
+          <i class="fas fa-shield-alt" style="margin-right:6px"></i> Administración
+        </button>
+        <button class="tab-btn" onclick="switchTab(2)">
+          <i class="fas fa-tasks" style="margin-right:6px"></i> Tareas
+        </button>
+      </div>
 
-    <div class="video-overlay header-text">
-      <div class="caption">
-        <h6>Aula virtual</h6>
-        <h2><em>Seccion E</em> Segundo Año</h2>
-        <h6 style="margin-top: 0px;">Valor, Disciplia y Leatlad</h6>
-        <div class="main-button">
-          <div class="scroll-to-section"><a href="#section2">Iniciemos</a></div>
+      <!-- TAB 1: DOCUMENTOS -->
+      <div class="tab-panel active" id="panel-0">
+        <h4 style="margin-bottom:20px; font-family:'Rajdhani',sans-serif; font-size:1.2rem;">Documentos Importantes</h4>
+        <div class="doc-grid">
+          <a href="https://docs.google.com/spreadsheets/d/1bbfL931W_UpgGHAO6aiUq8qcM0q9gOrS/edit?usp=sharing" target="_blank" class="doc-card">
+            <i class="fas fa-calendar-alt"></i>
+            <h5>Horario de Clases</h5>
+            <p>Ver documento</p>
+          </a>
+          <a href="https://drive.google.com/drive/folders/1rMd3Y6OQYlAhn61mDptYg9R9vPJVRDkH?usp=sharing" target="_blank" class="doc-card">
+            <i class="fas fa-university"></i>
+            <h5>Documentos UCE</h5>
+            <p>Abrir carpeta</p>
+          </a>
+          <a href="https://drive.google.com/drive/folders/1rMd3Y6OQYlAhn61mDptYg9R9vPJVRDkH?usp=sharing" target="_blank" class="doc-card">
+            <i class="fas fa-users"></i>
+            <h5>Grupos de Trabajo</h5>
+            <p>Abrir carpeta</p>
+          </a>
+          <a href="https://docs.google.com/spreadsheets/d/1rNZj38eCXUEh_FulqeM8XROWjxbpYw3i/edit?usp=sharing" target="_blank" class="doc-card">
+            <i class="fas fa-list-ol"></i>
+            <h5>Lista Sección E</h5>
+            <p>Ver lista</p>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- ***** Main Banner Area End ***** -->
 
+      <!-- TAB 2: ADMINISTRACIÓN -->
+      <div class="tab-panel" id="panel-1">
+        <h4 style="margin-bottom:6px; font-family:'Rajdhani',sans-serif; font-size:1.2rem;">Organización de la Sección E</h4>
+        <p style="color:var(--text-muted); font-size:0.83rem; margin-bottom:24px;">Estructura de mando y responsabilidades del segundo año</p>
 
-  <section class="features">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-12">
-          <div class="features-post">
-            <div class="features-content">
-              <div class="content-show">
-                <h4><i class="fa fa-pencil"></i>¿Qué es? </h4>
-              </div>
-              <div class="content-hide">
-                <p>Una página creada y pensada para los cadetes de la sección E y obtener información de forma más
-                  rapida </p>
-              </div>
-            </div>
+        <!-- Mando superior -->
+        <div class="org-divider">Mando</div>
+        <div class="admin-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px,1fr));">
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-star"></i> Comandante de Sección</div>
+            <h4>Cadete Comandante</h4>
+            <div class="cadete-name" id="r-comandante">— Nombre del cadete —</div>
+            <p>Responsable de la disciplina, conducta y rendimiento general de la sección E. Reporta directamente al oficial instructor.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-chevron-up"></i> Subcomandante</div>
+            <h4>Cadete Subcomandante</h4>
+            <div class="cadete-name" id="r-subcomandante">— Nombre del cadete —</div>
+            <p>Apoya al comandante y lo reemplaza en su ausencia. Coordina las novedades diarias de la sección.</p>
           </div>
         </div>
 
-        <div class="col-lg-4 col-12">
-          <div class="features-post third-features">
-            <div class="features-content">
-              <div class="content-show">
-                <h4><i class="fa fa-book"></i>Fallos o errores</h4>
-              </div>
-              <div class="content-hide">
-                <p>Contactate con el equipo de desarrollo para sugerencias o fallos </p>
-              </div>
-            </div>
+        <!-- Secretaría y servicios internos -->
+        <div class="org-divider">Secretaría y Servicios Internos</div>
+        <div class="admin-grid">
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-book"></i> Secretario Académico</div>
+            <h4>Gestión Académica</h4>
+            <div class="cadete-name" id="r-secretario">— Nombre del cadete —</div>
+            <p>Registra tareas, fechas de entrega, notas y comunicados académicos. Actualiza esta plataforma.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-clipboard-list"></i> Jefe de Guardia</div>
+            <h4>Control de Asistencia</h4>
+            <div class="cadete-name" id="r-guardia">— Nombre del cadete —</div>
+            <p>Registra asistencia diaria, reporta novedades de personal y elabora partes de guardia.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-tools"></i> Encargado de Material</div>
+            <h4>Logística y Material</h4>
+            <div class="cadete-name" id="r-material">— Nombre del cadete —</div>
+            <p>Custodia y entrega equipos de instrucción, material de aula y recursos de la sección.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-bullhorn"></i> Vocero</div>
+            <h4>Comunicaciones</h4>
+            <div class="cadete-name" id="r-vocero">— Nombre del cadete —</div>
+            <p>Difunde información oficial entre los cadetes y mantiene los canales de comunicación activos.</p>
           </div>
         </div>
+
+        <!-- Comandantes de escuadra -->
+        <div class="org-divider">Comandantes de Escuadra</div>
+        <div class="admin-grid">
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-shield-alt"></i> Escuadra 1</div>
+            <h4>Comandante Escuadra Alfa</h4>
+            <div class="cadete-name" id="r-esc1">— Nombre del cadete —</div>
+            <p>Dirige y coordina a los integrantes de la primera escuadra en formaciones y actividades.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-shield-alt"></i> Escuadra 2</div>
+            <h4>Comandante Escuadra Bravo</h4>
+            <div class="cadete-name" id="r-esc2">— Nombre del cadete —</div>
+            <p>Dirige y coordina a los integrantes de la segunda escuadra en formaciones y actividades.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-badge"><i class="fas fa-shield-alt"></i> Escuadra 3</div>
+            <h4>Comandante Escuadra Charlie</h4>
+            <div class="cadete-name" id="r-esc3">— Nombre del cadete —</div>
+            <p>Dirige y coordina a los integrantes de la tercera escuadra en formaciones y actividades.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:28px; font-size:0.78rem; color:var(--text-muted);">
+          <i class="fas fa-info-circle"></i> &nbsp;Para actualizar los nombres, contacta al secretario académico o al equipo de desarrollo.
+        </p>
       </div>
-    </div>
-  </section>
 
-  <section class="section why-us" data-section="section2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Varios</h2>
+      <!-- TAB 3: TAREAS -->
+      <div class="tab-panel" id="panel-2">
+        <div class="task-toolbar">
+          <div>
+            <h4 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; margin:0;">Lista de Tareas</h4>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin:4px 0 0;">Gestión de deberes y entregas de la sección</p>
           </div>
+          <button class="btn btn-gold" onclick="openModal()">
+            <i class="fas fa-plus"></i> Agregar Tarea
+          </button>
         </div>
-        <div class="col-md-12">
-          <div id='tabs'>
-            <ul>
-              <li><a href='#tabs-1'>Documentos importantes</a></li>
-              <li><a href='#tabs-2'>Administración</a></li>
-              <li><a href='#tabs-3'>Tareas</a></li>
-            </ul>
-            <section class='tabs-content'>
-              <article id='tabs-1'>
-                <div class="row">
-                  <div class="col-md-12">
-                    <h4 style="margin-bottom: 20px;">Documentos Importantes</h4>
-                    <div class="row">
 
-                      <div class="col-md-4">
-                        <a href="https://docs.google.com/spreadsheets/d/1bbfL931W_UpgGHAO6aiUq8qcM0q9gOrS/edit?usp=sharing&ouid=117107702074137704830&rtpof=true&sd=true"
-                          target="_blank" class="doc-card">
-                          <i class="fa fa-file-pdf-o"></i>
-                          <h5>Horario de Clases</h5>
-                          <p>Ver documento</p>
-                        </a>
-                      </div>
-
-                      <div class="col-md-4">
-                        <a href="https://drive.google.com/drive/folders/1rMd3Y6OQYlAhn61mDptYg9R9vPJVRDkH?usp=sharing"
-                          target="_blank" class="doc-card">
-                          <i class="fa fa-folder-open"></i>
-                          <h5>Documentos UCE</h5>
-                          <p>Abrir carpeta</p>
-                        </a>
-                      </div>
-
-                      <div class="col-md-4">
-                        <a href="https://drive.google.com/drive/folders/1rMd3Y6OQYlAhn61mDptYg9R9vPJVRDkH?usp=sharing"
-                          target="_blank" class="doc-card">
-                          <i class="fa fa-group"></i>
-                          <h5>Grupos de Trabajo</h5>
-                          <p>Abrir carpeta</p>
-                        </a>
-                      </div>
-
-                      <div class="col-md-4">
-                        <a href="https://docs.google.com/spreadsheets/d/1rNZj38eCXUEh_FulqeM8XROWjxbpYw3i/edit?usp=sharing&ouid=117107702074137704830&rtpof=true&sd=true"
-                          target="_blank" class="doc-card">
-                          <i class="fa fa-folder-open"></i>
-                          <h5>Lista de Sección E</h5>
-                          <p>Abrir carpeta</p>
-                        </a>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </article>
-              <article id='tabs-2'>
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="assets/images/choose-us-image-02.png" alt="">
-                  </div>
-                  <div class="col-md-6">
-                    <h4>Administración</h4>
-                    <p>Bertekad menjalankan setiap kebijakan dan program organisasi secara profesional dan transparan
-                      demi mencapai visi dan misi yang
-                      telah ditetapkan. Membimbing karyawan dengan penuh dedikasi sehingga setiap sumber daya dikelola
-                      dan dikembangkan secara optimal
-                      guna menambah value bagi organisasi.</p>
-                    <!-- <p>continue....</p> -->
-                  </div>
-                </div>
-              </article>
-              <article id='tabs-3'>
-                <div class="row">
-                  <div class="col-md-12">
-                    <h4 style="margin-bottom: 20px;">Lista de Tareas</h4>
-
-                    <div class="table-responsive">
-                      <table class="table table-bordered table-striped table-dark">
-                        <thead>
-                          <tr>
-                            <th>Materia</th>
-                            <th>Tarea</th>
-                            <th>Fecha de Entrega</th>
-                            <th>Estado</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          <tr>
-                            <td>Matemática</td>
-                            <td>Resolver ejercicios página 25</td>
-                            <td>12/06/2026</td>
-                            <td>Pendiente</td>
-                          </tr>
-
-                          <tr>
-                            <td>Lenguaje</td>
-                            <td>Leer capítulo 3</td>
-                            <td>13/06/2026</td>
-                            <td>En proceso</td>
-                          </tr>
-
-                          <tr>
-                            <td>Inglés</td>
-                            <td>Aprender vocabulario</td>
-                            <td>14/06/2026</td>
-                            <td>Completado</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </section>
-          </div>
+        <!-- Filtros -->
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+          <button class="btn btn-sm btn-outline filter-btn active" data-filter="all">Todas</button>
+          <button class="btn btn-sm btn-outline filter-btn" data-filter="Pendiente">Pendientes</button>
+          <button class="btn btn-sm btn-outline filter-btn" data-filter="En proceso">En proceso</button>
+          <button class="btn btn-sm btn-outline filter-btn" data-filter="Completado">Completadas</button>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section video" data-section="section5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 align-self-center">
-          <div class="left-content">
-            <span>presentasi kami adalah untuk Anda</span>
-            <h4>Tonton Video ini Untuk Mengetahui Lebih Tentang<em> SDN 2 Ampeldento</em></h4>
-            <p>Video ini berisi bagaimana pembelajaran di SDN 2 Ampeldento. Proses dan metode pembelajaran di sekolah
-              dasar negeri ini ternyata begitu
-              efektif dan kondusif membuat para peserta didik mampu mengikuti pelajaran dengan fokus dan antusias tinggi
-              sehingga tujuan pembelajaran
-              dapat tercapai dengan baik.
-              <br><br>Praktik pembelajaran yang diimplementasikan oleh para guru dan staf di SDN 2 Ampeldento ini terus
-              mengalami peningkatan mutu agar
-              para siswa dapat terus belajar dan berkembang sesuai potensi maksimal mereka ke depannya.
-            </p>
-            <div class="main-button"><a rel="nofollow" href="https://www.youtube.com/embed/FWsYg1eezUc "
-                target="_blank">Tonton di Youtube</a></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <article class="video-item">
-            <div class="video-caption">
-              <h4>Profil SDN 2 Ampeldento - YouTube</h4>
-            </div>
-            <figure>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/FWsYg1eezUc"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            </figure>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="section courses" data-section="section4">
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Servicios</h2>
-          </div>
-        </div>
-        <div class="owl-carousel owl-theme">
-
-          <div class="item">
-            <a href="https://wa.me/593986994635?text=Hola,%20quiero%20información%20sobre...%20" target="_blank"
-              style="text-decoration: none; color: inherit;">
-
-              <img src="assets/images/courses-mm.jpg" alt="Course #1">
-
-              <div class="down-content">
-                <h4>Bazar</h4>
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre...%20" target="_blank"
-              style="text-decoration: none; color: inherit;">
-              <img src="assets/images/courses-mm.jpg" alt="Course #1">
-              <div class="down-content">
-                <h4>Bar</h4>
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre...%20" target="_blank"
-              style="text-decoration: none; color: inherit;">
-              <img src="assets/images/lavanderia.jpg" alt="Course #1">
-              <div class="down-content">
-                <h4>Lavandería</h4>
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre...%20" target="_blank"
-              style="text-decoration: none; color: inherit;">
-              <img src="assets/images/inernet.png" alt="Course #1">
-              <div class="down-content">
-                <h4>Internet</h4>
-              </div>
-            </a>
-          </div>
-
-          <div class="item">
-            <a href="https://wa.me/593988342258?text=Hola,%20quiero%20información%20sobre...%20" target="_blank"
-              style="text-decoration: none; color: inherit;">
-
-              <img src="assets/images/peluqueria.png" alt="Course #1">
-
-              <div class="down-content">
-                <h4>Peluqueria</h4>
-              </div>
-            </a>
+        <div class="table-responsive">
+          <table id="task-table">
+            <thead>
+              <tr>
+                <th>Materia</th>
+                <th>Tarea / Deber</th>
+                <th>Fecha de Entrega</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="task-tbody">
+              <!-- Tasks injected by JS -->
+            </tbody>
+          </table>
+          <div class="empty-state" id="empty-state" style="display:none;">
+            <i class="fas fa-clipboard-check"></i>
+            <p>No hay tareas que mostrar.<br>¡Agrega la primera usando el botón de arriba!</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-
-
-  <section class="section contact" data-section="section6">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Sugerencias y Opiniones</h2>
-          </div>
+<!-- ══ SERVICIOS ══ -->
+<section id="section4" class="section" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Servicios <span>Disponibles</span></h2>
+      <p>Contáctanos directo por WhatsApp</p>
+    </div>
+    <div class="services-grid">
+      <a href="https://wa.me/593986994635?text=Hola,%20quiero%20información%20sobre%20el%20bazar" target="_blank" class="service-card">
+        <img src="assets/images/courses-mm.jpg" alt="Bazar" onerror="this.style.background='#1f3a52';this.style.height='140px'">
+        <div class="card-body">
+          <h4>🛒 Bazar</h4>
+          <span>Contactar</span>
         </div>
-        <div class="col-md-6">
-
-          <!-- Do you need a working HTML contact-form script?
-                	
-                    Please visit https://templatemo.com/contact page -->
-
-          <form id="contact" action="" method="post">
-            <div class="row">
-              <div class="col-md-6">
-                <fieldset>
-                  <input name="name" type="text" class="form-control" id="name" placeholder="Nombres" required="">
-                </fieldset>
-              </div>
-              <div class="col-md-12">
-                <fieldset>
-                  <textarea name="message" rows="6" class="form-control" id="message"
-                    placeholder="Mensaje o Sugerencia..." required=""></textarea>
-                </fieldset>
-              </div>
-              <div class="col-md-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="button">
-                    <img src="assets/images/icon-whatsapp.png" alt="Icon">
-                    Contáctanos
-                  </button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-          <script>
-            const form = document.getElementById('contact');
-
-            form.addEventListener('submit', e => {
-              e.preventDefault();
-
-              const name = document.getElementById('name').value;
-              const message = document.getElementById('message').value;
-              const nameText = `Sugerencia de ${name}`;
-              const url = `https://wa.me/593986618968?text=${encodeURIComponent(nameText)} : %0A${encodeURIComponent(message)}`;
-
-              window.open(url, '_blank');
-            }); 
-          </script>
+      </a>
+      <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20bar" target="_blank" class="service-card">
+        <img src="assets/images/courses-mm.jpg" alt="Bar" onerror="this.style.background='#1f3a52';this.style.height='140px'">
+        <div class="card-body">
+          <h4>☕ Bar</h4>
+          <span>Contactar</span>
         </div>
-        <div class="col-md-6">
-          <div id="map">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63229.38128570529!2d112.53215674612078!3d-7.912159999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7881edf4da3b03%3A0x29e70f6b6631dac5!2sSDN%202!5e0!3m2!1sid!2sid!4v1689327574077!5m2!1sid!2sid"
-              width="100%" height="422px" frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
+      </a>
+      <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20la%20lavandería" target="_blank" class="service-card">
+        <img src="assets/images/lavanderia.jpg" alt="Lavandería" onerror="this.style.background='#1f3a52';this.style.height='140px'">
+        <div class="card-body">
+          <h4>👕 Lavandería</h4>
+          <span>Contactar</span>
         </div>
+      </a>
+      <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20internet" target="_blank" class="service-card">
+        <img src="assets/images/inernet.png" alt="Internet" onerror="this.style.background='#1f3a52';this.style.height='140px'">
+        <div class="card-body">
+          <h4>🌐 Internet</h4>
+          <span>Contactar</span>
+        </div>
+      </a>
+      <a href="https://wa.me/593988342258?text=Hola,%20quiero%20información%20sobre%20la%20peluquería" target="_blank" class="service-card">
+        <img src="assets/images/peluqueria.png" alt="Peluquería" onerror="this.style.background='#1f3a52';this.style.height='140px'">
+        <div class="card-body">
+          <h4>✂️ Peluquería</h4>
+          <span>Contactar</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACTO ══ -->
+<section id="section6" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Sugerencias y <span>Opiniones</span></h2>
+      <p>Tu mensaje llega directo por WhatsApp</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" class="form-control" id="contact-name" placeholder="Tu nombre completo">
+        </div>
+        <div class="form-group">
+          <label>Mensaje o Sugerencia</label>
+          <textarea class="form-control" id="contact-msg" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
+        <button class="btn-whatsapp" onclick="sendWhatsapp()">
+          <i class="fab fa-whatsapp" style="font-size:1.1rem"></i> Enviar por WhatsApp
+        </button>
+      </div>
+      <div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63229.38128570529!2d112.53215674612078!3d-7.912159999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7881edf4da3b03%3A0x29e70f6b6631dac5!2sSDN%202!5e0!3m2!1sid!2sid!4v1689327574077!5m2!1sid!2sid"
+          width="100%" height="380" style="border:0; border-radius:10px;" allowfullscreen loading="lazy">
+        </iframe>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p><i class="fa fa-copyright"></i> Copyright 2026
+<footer>
+  <p>© 2026 Sección E &mdash; Segundo Año &nbsp;|&nbsp;
+    <a href="https://github.com/DennisCatana/School-Profile-Website" target="_blank">Dark</a>
+  </p>
+</footer>
 
-            | <a href="https://github.com/DennisCatana/School-Profile-Website" rel="sponsored" target="_parent">Dark</a></p>
-        </div>
+<!-- ══ MODAL AGREGAR TAREA ══ -->
+<div class="modal-backdrop" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>📋 Nueva Tarea</h3>
+      <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="form-group">
+      <label>Materia *</label>
+      <input type="text" class="form-control" id="task-subject" placeholder="Ej: Matemática, Lenguaje...">
+    </div>
+    <div class="form-group">
+      <label>Descripción de la Tarea *</label>
+      <input type="text" class="form-control" id="task-desc" placeholder="Describe el deber o tarea...">
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom:0">
+        <label>Fecha de Entrega *</label>
+        <input type="date" class="form-control" id="task-date">
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label>Estado</label>
+        <select class="form-control" id="task-status">
+          <option value="Pendiente">Pendiente</option>
+          <option value="En proceso">En proceso</option>
+          <option value="Completado">Completado</option>
+        </select>
       </div>
     </div>
-  </footer>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <div style="display:flex; gap:12px; margin-top:28px;">
+      <button class="btn btn-outline" style="flex:1" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-gold" style="flex:2" onclick="saveTask()">
+        <i class="fas fa-save"></i> Guardar Tarea
+      </button>
+    </div>
+  </div>
+</div>
 
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/lightbox.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/video.js"></script>
-  <script src="assets/js/slick-slider.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script>
-    //according to loftblog tut
-    $('.nav li:first').addClass('active');
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"></div>
 
-    var showSection = function showSection(section, isAnimate) {
-      var
-        direction = section.replace(/#/, ''),
-        reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-        reqSectionPos = reqSection.offset().top - 0;
+<script>
+  /* ── NAV ── */
+  function toggleMenu() {
+    document.getElementById('main-nav').classList.toggle('open');
+  }
+  document.querySelectorAll('#main-nav a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('main-nav').classList.remove('open'));
+  });
 
-      if (isAnimate) {
-        $('body, html').animate({
-          scrollTop: reqSectionPos
-        },
-          800);
-      } else {
-        $('body, html').scrollTop(reqSectionPos);
-      }
+  /* ── TABS ── */
+  function switchTab(idx) {
+    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
+    document.querySelectorAll('.tab-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  }
 
-    };
+  /* ── TASKS (localStorage) ── */
+  const STORAGE_KEY = 'seccion_e_tasks';
 
-    var checkSection = function checkSection() {
-      $('.section').each(function () {
-        var
-          $this = $(this),
-          topEdge = $this.offset().top - 80,
-          bottomEdge = topEdge + $this.height(),
-          wScroll = $(window).scrollTop();
-        if (topEdge < wScroll && bottomEdge > wScroll) {
-          var
-            currentId = $this.data('section'),
-            reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-          reqLink.closest('li').addClass('active').
-            siblings().removeClass('active');
-        }
-      });
-    };
+  let tasks = [];
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    tasks = saved ? JSON.parse(saved) : defaultTasks();
+  } catch(e) { tasks = defaultTasks(); }
 
-    $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
-      if ($(e.target).hasClass('external')) {
-        return;
-      }
-      e.preventDefault();
-      $('#menu').removeClass('active');
-      showSection($(this).attr('href'), true);
+  function defaultTasks() {
+    return [
+      { id: 1, subject: 'Matemática', desc: 'Resolver ejercicios página 25', date: '2026-06-12', status: 'Pendiente' },
+      { id: 2, subject: 'Lenguaje',   desc: 'Leer capítulo 3',               date: '2026-06-13', status: 'En proceso' },
+      { id: 3, subject: 'Inglés',     desc: 'Aprender vocabulario',           date: '2026-06-14', status: 'Completado' },
+    ];
+  }
+
+  function saveTasks() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); } catch(e) {}
+  }
+
+  let currentFilter = 'all';
+
+  function renderTasks() {
+    const tbody = document.getElementById('task-tbody');
+    const empty = document.getElementById('empty-state');
+    const filtered = currentFilter === 'all' ? tasks : tasks.filter(t => t.status === currentFilter);
+
+    if (!filtered.length) {
+      tbody.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+
+    tbody.innerHTML = filtered.map(t => {
+      const statusBadge = {
+        'Pendiente':  '<span class="badge badge-danger">Pendiente</span>',
+        'En proceso': '<span class="badge badge-warning">En proceso</span>',
+        'Completado': '<span class="badge badge-success">Completado</span>',
+      }[t.status] || `<span class="badge badge-info">${t.status}</span>`;
+
+      const dateStr = t.date ? new Date(t.date + 'T00:00:00').toLocaleDateString('es-EC', {day:'2-digit',month:'short',year:'numeric'}) : '—';
+
+      return `<tr>
+        <td><strong>${t.subject}</strong></td>
+        <td>${t.desc}</td>
+        <td>${dateStr}</td>
+        <td>${statusBadge}</td>
+        <td>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <select class="form-control" style="padding:4px 8px;font-size:0.75rem;width:auto;" onchange="updateStatus(${t.id}, this.value)">
+              ${['Pendiente','En proceso','Completado'].map(s => `<option${s===t.status?' selected':''}>${s}</option>`).join('')}
+            </select>
+            <button class="btn btn-sm btn-danger" onclick="deleteTask(${t.id})" title="Eliminar">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  function updateStatus(id, newStatus) {
+    const t = tasks.find(t => t.id === id);
+    if (t) { t.status = newStatus; saveTasks(); renderTasks(); }
+  }
+
+  function deleteTask(id) {
+    tasks = tasks.filter(t => t.id !== id);
+    saveTasks();
+    renderTasks();
+    showToast('Tarea eliminada', 'danger');
+  }
+
+  /* ── MODAL ── */
+  function openModal() {
+    document.getElementById('task-date').value = new Date().toISOString().split('T')[0];
+    document.getElementById('modal').classList.add('open');
+  }
+  function closeModal() { document.getElementById('modal').classList.remove('open'); }
+  function closeModalOutside(e) { if (e.target.id === 'modal') closeModal(); }
+
+  function saveTask() {
+    const subject = document.getElementById('task-subject').value.trim();
+    const desc    = document.getElementById('task-desc').value.trim();
+    const date    = document.getElementById('task-date').value;
+    const status  = document.getElementById('task-status').value;
+
+    if (!subject || !desc || !date) { showToast('Completa todos los campos requeridos', 'danger'); return; }
+
+    tasks.push({ id: Date.now(), subject, desc, date, status });
+    saveTasks();
+    renderTasks();
+    closeModal();
+    showToast('¡Tarea agregada correctamente!', 'success');
+
+    document.getElementById('task-subject').value = '';
+    document.getElementById('task-desc').value = '';
+    document.getElementById('task-status').value = 'Pendiente';
+  }
+
+  /* ── FILTERS ── */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderTasks();
     });
+  });
 
-    $(window).scroll(function () {
-      checkSection();
+  /* ── TOAST ── */
+  let toastTimer;
+  function showToast(msg, type='success') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = `toast show ${type}`;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  /* ── WHATSAPP ── */
+  function sendWhatsapp() {
+    const name = document.getElementById('contact-name').value.trim();
+    const msg  = document.getElementById('contact-msg').value.trim();
+    if (!name || !msg) { showToast('Por favor completa nombre y mensaje', 'danger'); return; }
+    const url = `https://wa.me/593986618968?text=${encodeURIComponent('Sugerencia de ' + name + ':\n' + msg)}`;
+    window.open(url, '_blank');
+  }
+
+  /* ── SCROLL ACTIVE NAV ── */
+  const sections = document.querySelectorAll('[id^="section"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
     });
-  </script>
+    document.querySelectorAll('#main-nav a').forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  /* ── INIT ── */
+  renderTasks();
+</script>
 </body>
-
 </html>
