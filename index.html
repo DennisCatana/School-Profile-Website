@@ -695,56 +695,78 @@
     }
 
     /* ── SERVICIOS ── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 20px;
-    }
+.services-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 150px); /* tamaño fijo pequeño */
+  gap: 14px;
+}
 
-    .service-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--surface);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      text-decoration: none;
-      color: var(--text);
-      transition: all 0.25s;
-      display: flex;
-      flex-direction: column;
-    }
+/* CARD */
+.service-card{
+  width: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.08);
+  text-decoration: none;
+  color: var(--text);
+  transition: .25s;
+}
 
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-      box-shadow: 0 12px 32px rgba(245, 164, 37, 0.2);
-    }
+.service-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
 
-    .service-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
+/* IMAGEN */
+.service-card img{
+  width: 100%;
+  height: 85px; /* más pequeña */
+  object-fit: cover;
+}
 
-    .service-card .card-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      background: var(--navy-mid);
-    }
+/* CONTENIDO */
+.card-body{
+  padding: 10px 8px;
+  text-align: center;
+  background: var(--navy-mid);
+}
 
-    .service-card h4 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-align: center;
-      margin: 0;
-    }
+.card-body h4{
+  margin: 0;
+  font-size: .82rem;
+}
 
-    .service-card span {
-      font-size: 0.73rem;
-      color: var(--text-muted);
-    }
+.card-body span{
+  font-size: .68rem;
+  color: var(--text-muted);
+}
+
+/* TABLET */
+@media (max-width: 900px){
+
+  .services-grid{
+    grid-template-columns: repeat(3, 140px);
+    justify-content: center;
+  }
+
+  .service-card{
+    width: 140px;
+  }
+}
+
+/* CELULAR */
+@media (max-width: 500px){
+
+  .services-grid{
+    grid-template-columns: 2fr;
+    justify-items: center;
+  }
+
+  .service-card{
+    width: 180px;
+  }
+}
 
     /* ── CONTACT ── */
     #section6 {
@@ -874,8 +896,8 @@
       <ul>
         <li><a href="#section1">Inicio</a></li>
         <li><a href="#section2">Varios</a></li>
-        <li><a href="#section4">Servicios</a></li>
-        <li><a href="#section6">Contacto</a></li>
+        <li><a href="#section3">Formación</a></li>
+        <li><a href="#section4">Contactos</a></li>
       </ul>
     </nav>
   </header>
@@ -1069,85 +1091,106 @@
     </div>
   </section>
 
-  <!-- ══ SERVICIOS ══ -->
-  <section id="section4" class="section" style="background:var(--surface);">
+  <!-- ══ formación ══ -->
+  <section id="section3" class="section" style="background:var(--surface);">
     <div class="container">
       <div class="section-heading">
-        <h2>Servicios <span>Disponibles</span></h2>
-        <p>Contáctanos directo por WhatsApp</p>
+        <h2>Tipos de <span>Formación</span></h2>
       </div>
-      <div class="services-grid">
-        <a href="https://wa.me/593986994635?text=Hola,%20quiero%20información%20sobre%20el%20bazar" target="_blank"
-          class="service-card">
-          <img src="assets/images/Barquilete.png" alt="Bazar"
-            onerror="this.style.background='#1f3a52';this.style.height='140px'">
-          <div class="card-body">
-            <h4>Bazar</h4>
-            <span>Contactar</span>
-          </div>
-        </a>
-        <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20bar" target="_blank"
-          class="service-card">
-          <img src="assets/images/bar.jpg" alt="Bar"
-            onerror="this.style.background='#1f3a52';this.style.height='140px'">
-          <div class="card-body">
-            <h4>Bar</h4>
-            <span>Contactar</span>
-          </div>
-        </a>
-        <a href="https://wa.me/593981383829?text=Hola,%20quiero%20información%20sobre%20la%20lavandería" target="_blank"
-          class="service-card">
-          <img src="assets/images/lavanderia.png" alt="Lavandería"
-            onerror="this.style.background='#1f3a52';this.style.height='140px'">
-          <div class="card-body">
-            <h4>Lavandería</h4>
-            <span>Contactar</span>
-          </div>
-        </a>
-        <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20internet" target="_blank"
-          class="service-card">
-          <img src="assets/images/inernet.png" alt="Internet"
-            onerror="this.style.background='#1f3a52';this.style.height='140px'">
-          <div class="card-body">
-            <h4>Internet</h4>
-            <span>Contactar</span>
-          </div>
-        </a>
-        <a href="https://wa.me/593988342258?text=Hola,%20quiero%20información%20sobre%20la%20peluquería" target="_blank"
-          class="service-card">
-          <img src="assets/images/peluqueria.png" alt="Peluquería"
-            onerror="this.style.background='#1f3a52';this.style.height='140px'">
-          <div class="card-body">
-            <h4>Peluquería</h4>
-            <span>Contactar</span>
-          </div>
-        </a>
+      <div>
+        <p>Módulo en contrucción ...</p> 
+        <p>Esto tardará un momento ...</p>
       </div>
     </div>
   </section>
 
-  <!-- ══ CONTACTO ══ -->
-  <section id="section6" class="section">
+  <!-- ══ CONTACTOS ══ -->
+  <section id="section4" class="section">
     <div class="container">
-      <div class="section-heading">
-        <h2>Sugerencias y <span>Opiniones</span></h2>
-        <p>Tu mensaje llega directo por WhatsApp</p>
-      </div>
+
       <div class="contact-grid">
-        <div class="contact-form">
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" class="form-control" id="contact-name" placeholder="Tu nombre completo">
+
+        <!-- IZQUIERDA -->
+
+        <div>
+          <div class="section-heading">
+            <h2>Servicios <span>Disponibles</span></h2>
+            <p>Contáctanos directo por WhatsApp</p>
           </div>
-          <div class="form-group">
-            <label>Mensaje o Sugerencia</label>
-            <textarea class="form-control" id="contact-msg" rows="5"
-              placeholder="Escribe tu mensaje aquí..."></textarea>
+
+          <div class="services-grid">
+
+            <a href="#" class="service-card">
+              <img src="assets/images/Barquilete.png" alt="Bazar">
+              <div class="card-body">
+                <h4>Bazar</h4>
+                <span>Contactar</span>
+              </div>
+            </a>
+
+            <a href="#" class="service-card">
+              <img src="assets/images/bar.jpg" alt="Bar">
+              <div class="card-body">
+                <h4>Bar</h4>
+                <span>Contactar</span>
+              </div>
+            </a>
+
+            <a href="#" class="service-card">
+              <img src="assets/images/lavanderia.png" alt="Lavandería">
+              <div class="card-body">
+                <h4>Lavandería</h4>
+                <span>Contactar</span>
+              </div>
+            </a>
+
+            <a href="#" class="service-card">
+              <img src="assets/images/inernet.png" alt="Internet">
+              <div class="card-body">
+                <h4>Internet</h4>
+                <span>Contactar</span>
+              </div>
+            </a>
+
+            <a href="#" class="service-card">
+              <img src="assets/images/peluqueria.png" alt="Peluquería">
+              <div class="card-body">
+                <h4>Peluquería</h4>
+                <span>Contactar</span>
+              </div>
+            </a>
+
           </div>
-          <button class="btn-whatsapp" onclick="sendWhatsapp()">
-            <i class="fab fa-whatsapp" style="font-size:1.1rem"></i> Enviar por WhatsApp
-          </button>
         </div>
+
+        <!-- DERECHA -->
+        <div>
+          <div class="section-heading">
+            <h2>Sugerencias y <span>Opiniones</span></h2>
+            <p>Tu mensaje llega directo por WhatsApp</p>
+          </div>
+
+          <div class="contact-form">
+
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" class="form-control" id="contact-name" placeholder="Tu nombre completo">
+            </div>
+
+            <div class="form-group">
+              <label>Mensaje o Sugerencia</label>
+              <textarea class="form-control" id="contact-msg" rows="5"
+                placeholder="Escribe tu mensaje aquí..."></textarea>
+            </div>
+
+            <button class="btn-whatsapp" onclick="sendWhatsapp()">
+              <i class="fab fa-whatsapp"></i>
+              Enviar por WhatsApp
+            </button>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
