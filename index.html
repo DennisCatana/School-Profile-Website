@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Aula Virtual Sección E - Segundo Año">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>SECCIÓN E</title>
 
@@ -23,12 +26,26 @@
       --danger: #ea5455;
       --info: #00cfe8;
       --radius: 10px;
-      --shadow: 0 4px 24px rgba(0,0,0,0.35);
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    .admin-only {
+      display: none;
+    }
+
+    .admin-mode .admin-only {
+      display: flex;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Montserrat', sans-serif;
@@ -40,11 +57,13 @@
     /* ── HEADER ── */
     header {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
-      background: rgba(13,27,42,0.95);
+      background: rgba(13, 27, 42, 0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(245,164,37,0.2);
+      border-bottom: 1px solid rgba(245, 164, 37, 0.2);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -59,9 +78,18 @@
       color: var(--text);
       text-decoration: none;
     }
-    .logo em { color: var(--gold); font-style: normal; }
 
-    nav ul { list-style: none; display: flex; gap: 8px; }
+    .logo em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+    }
+
     nav ul li a {
       color: var(--text-muted);
       text-decoration: none;
@@ -73,9 +101,11 @@
       border-radius: 6px;
       transition: all 0.2s;
     }
-    nav ul li a:hover, nav ul li.active a {
+
+    nav ul li a:hover,
+    nav ul li.active a {
       color: var(--gold);
-      background: rgba(245,164,37,0.1);
+      background: rgba(245, 164, 37, 0.1);
     }
 
     /* hamburger */
@@ -90,19 +120,35 @@
     }
 
     @media (max-width: 768px) {
-      .menu-toggle { display: block; }
+      .menu-toggle {
+        display: block;
+      }
+
       nav {
         position: fixed;
-        top: 64px; left: 0; right: 0;
-        background: rgba(13,27,42,0.98);
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(13, 27, 42, 0.98);
         transform: translateY(-120%);
         transition: transform 0.3s ease;
         padding: 16px;
-        border-bottom: 1px solid rgba(245,164,37,0.2);
+        border-bottom: 1px solid rgba(245, 164, 37, 0.2);
       }
-      nav.open { transform: translateY(0); }
-      nav ul { flex-direction: column; gap: 4px; }
-      nav ul li a { display: block; padding: 12px 16px; }
+
+      nav.open {
+        transform: translateY(0);
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 12px 16px;
+      }
     }
 
     /* ── HERO ── */
@@ -119,7 +165,8 @@
     #bg-video {
       position: absolute;
       inset: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       opacity: 0.25;
     }
@@ -132,8 +179,8 @@
 
     .hero-badge {
       display: inline-block;
-      background: rgba(245,164,37,0.15);
-      border: 1px solid rgba(245,164,37,0.4);
+      background: rgba(245, 164, 37, 0.15);
+      border: 1px solid rgba(245, 164, 37, 0.4);
       color: var(--gold);
       font-size: 0.75rem;
       font-weight: 700;
@@ -151,7 +198,11 @@
       line-height: 1.05;
       margin-bottom: 12px;
     }
-    .hero-overlay h1 em { color: var(--gold); font-style: normal; }
+
+    .hero-overlay h1 em {
+      color: var(--gold);
+      font-style: normal;
+    }
 
     .hero-motto {
       font-size: clamp(0.8rem, 2vw, 1rem);
@@ -173,10 +224,11 @@
       text-decoration: none;
       transition: all 0.2s;
     }
+
     .btn-hero:hover {
       background: var(--gold-dark);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(245,164,37,0.4);
+      box-shadow: 0 8px 24px rgba(245, 164, 37, 0.4);
     }
 
     /* ── SECTION BASE ── */
@@ -194,12 +246,17 @@
     .section-heading {
       margin-bottom: 40px;
     }
+
     .section-heading h2 {
       font-family: 'Rajdhani', sans-serif;
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 700;
     }
-    .section-heading h2 span { color: var(--gold); }
+
+    .section-heading h2 span {
+      color: var(--gold);
+    }
+
     .section-heading p {
       color: var(--text-muted);
       margin-top: 8px;
@@ -207,8 +264,19 @@
     }
 
     /* ── TABS ── */
-    .tabs-wrapper { background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-    .tab-nav { display: flex; border-bottom: 1px solid rgba(255,255,255,0.08); overflow-x: auto; }
+    .tabs-wrapper {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .tab-nav {
+      display: flex;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow-x: auto;
+    }
+
     .tab-btn {
       flex: 1;
       min-width: 130px;
@@ -226,14 +294,33 @@
       transition: all 0.2s;
       white-space: nowrap;
     }
-    .tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
-    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-    .tab-panel { display: none; padding: 32px; }
-    .tab-panel.active { display: block; }
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .tab-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .tab-panel {
+      display: none;
+      padding: 32px;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
 
     /* ── DOC CARDS ── */
-    .doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
     .doc-card {
       display: flex;
       flex-direction: column;
@@ -242,22 +329,37 @@
       gap: 10px;
       padding: 28px 16px;
       background: var(--navy-light);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius);
       text-decoration: none;
       color: var(--text);
       text-align: center;
       transition: all 0.25s;
     }
+
     .doc-card:hover {
       border-color: var(--gold);
-      background: rgba(245,164,37,0.08);
+      background: rgba(245, 164, 37, 0.08);
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(245,164,37,0.2);
+      box-shadow: 0 8px 24px rgba(245, 164, 37, 0.2);
     }
-    .doc-card i { font-size: 2rem; color: var(--gold); }
-    .doc-card h5 { font-size: 0.85rem; font-weight: 700; margin: 0; }
-    .doc-card p { font-size: 0.75rem; color: var(--text-muted); margin: 0; }
+
+    .doc-card i {
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .doc-card h5 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .doc-card p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
 
     /* ── ADMINISTRACIÓN ── */
     .admin-grid {
@@ -268,7 +370,7 @@
 
     .role-card {
       background: var(--navy-light);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius);
       padding: 24px;
       display: flex;
@@ -276,14 +378,17 @@
       gap: 10px;
       transition: border-color 0.2s;
     }
-    .role-card:hover { border-color: var(--gold); }
+
+    .role-card:hover {
+      border-color: var(--gold);
+    }
 
     .role-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(245,164,37,0.12);
-      border: 1px solid rgba(245,164,37,0.3);
+      background: rgba(245, 164, 37, 0.12);
+      border: 1px solid rgba(245, 164, 37, 0.3);
       color: var(--gold);
       font-size: 0.72rem;
       font-weight: 700;
@@ -293,16 +398,19 @@
       border-radius: 20px;
       width: fit-content;
     }
+
     .role-card h4 {
       font-size: 1rem;
       font-weight: 700;
       margin: 0;
     }
+
     .role-card .cadete-name {
       font-size: 0.88rem;
       color: var(--gold);
       font-weight: 600;
     }
+
     .role-card p {
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -321,11 +429,13 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-    .org-divider::before, .org-divider::after {
+
+    .org-divider::before,
+    .org-divider::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     /* ── TASKS TABLE ── */
@@ -352,19 +462,46 @@
       transition: all 0.2s;
       text-decoration: none;
     }
-    .btn-gold { background: var(--gold); color: var(--navy); }
-    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-dark);
+      transform: translateY(-1px);
+    }
+
     .btn-outline {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--text);
     }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-    .btn-sm { padding: 6px 12px; font-size: 0.75rem; }
-    .btn-danger { background: var(--danger); color: white; }
-    .btn-danger:hover { filter: brightness(1.1); }
 
-    .table-responsive { overflow-x: auto; border-radius: var(--radius); }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.75rem;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      filter: brightness(1.1);
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      border-radius: var(--radius);
+    }
 
     table {
       width: 100%;
@@ -372,6 +509,7 @@
       font-size: 0.85rem;
       min-width: 540px;
     }
+
     thead th {
       background: var(--navy-mid);
       color: var(--gold);
@@ -381,14 +519,23 @@
       text-transform: uppercase;
       padding: 14px 16px;
       text-align: left;
-      border-bottom: 2px solid rgba(245,164,37,0.3);
+      border-bottom: 2px solid rgba(245, 164, 37, 0.3);
     }
+
     tbody tr {
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       transition: background 0.15s;
     }
-    tbody tr:hover { background: rgba(255,255,255,0.04); }
-    tbody td { padding: 12px 16px; vertical-align: middle; color: var(--text); }
+
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    tbody td {
+      padding: 12px 16px;
+      vertical-align: middle;
+      color: var(--text);
+    }
 
     .badge {
       display: inline-block;
@@ -397,24 +544,48 @@
       font-size: 0.72rem;
       font-weight: 700;
     }
-    .badge-success { background: rgba(40,199,111,0.15); color: var(--success); }
-    .badge-warning { background: rgba(255,159,67,0.15); color: var(--warning); }
-    .badge-danger  { background: rgba(234,84,85,0.15);  color: var(--danger); }
-    .badge-info    { background: rgba(0,207,232,0.15);  color: var(--info); }
+
+    .badge-success {
+      background: rgba(40, 199, 111, 0.15);
+      color: var(--success);
+    }
+
+    .badge-warning {
+      background: rgba(255, 159, 67, 0.15);
+      color: var(--warning);
+    }
+
+    .badge-danger {
+      background: rgba(234, 84, 85, 0.15);
+      color: var(--danger);
+    }
+
+    .badge-info {
+      background: rgba(0, 207, 232, 0.15);
+      color: var(--info);
+    }
 
     .empty-state {
       text-align: center;
       padding: 48px 24px;
       color: var(--text-muted);
     }
-    .empty-state i { font-size: 3rem; margin-bottom: 12px; color: rgba(255,255,255,0.15); }
-    .empty-state p { font-size: 0.9rem; }
+
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.15);
+    }
+
+    .empty-state p {
+      font-size: 0.9rem;
+    }
 
     /* ── MODAL ── */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(6px);
       z-index: 2000;
       display: flex;
@@ -425,20 +596,27 @@
       pointer-events: none;
       transition: opacity 0.25s;
     }
-    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
 
     .modal {
       background: var(--surface);
-      border: 1px solid rgba(245,164,37,0.2);
+      border: 1px solid rgba(245, 164, 37, 0.2);
       border-radius: 14px;
       padding: 32px;
       width: 100%;
       max-width: 480px;
       transform: scale(0.95) translateY(10px);
       transition: transform 0.25s;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
     }
-    .modal-backdrop.open .modal { transform: scale(1) translateY(0); }
+
+    .modal-backdrop.open .modal {
+      transform: scale(1) translateY(0);
+    }
 
     .modal-header {
       display: flex;
@@ -446,12 +624,14 @@
       justify-content: space-between;
       margin-bottom: 24px;
     }
+
     .modal-header h3 {
       font-family: 'Rajdhani', sans-serif;
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--gold);
     }
+
     .modal-close {
       background: none;
       border: none;
@@ -461,9 +641,16 @@
       padding: 4px 8px;
       border-radius: 6px;
     }
-    .modal-close:hover { color: var(--text); background: rgba(255,255,255,0.08); }
 
-    .form-group { margin-bottom: 18px; }
+    .modal-close:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
     .form-group label {
       display: block;
       font-size: 0.78rem;
@@ -473,10 +660,11 @@
       color: var(--text-muted);
       margin-bottom: 7px;
     }
+
     .form-control {
       width: 100%;
       background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 8px;
       color: var(--text);
       font-family: 'Montserrat', sans-serif;
@@ -485,11 +673,26 @@
       outline: none;
       transition: border-color 0.2s;
     }
-    .form-control:focus { border-color: var(--gold); }
-    select.form-control option { background: var(--navy-mid); }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-control:focus {
+      border-color: var(--gold);
+    }
+
+    select.form-control option {
+      background: var(--navy-mid);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* ── SERVICIOS ── */
     .services-grid {
@@ -502,23 +705,26 @@
       border-radius: var(--radius);
       overflow: hidden;
       background: var(--surface);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       text-decoration: none;
       color: var(--text);
       transition: all 0.25s;
       display: flex;
       flex-direction: column;
     }
+
     .service-card:hover {
       transform: translateY(-5px);
       border-color: var(--gold);
-      box-shadow: 0 12px 32px rgba(245,164,37,0.2);
+      box-shadow: 0 12px 32px rgba(245, 164, 37, 0.2);
     }
+
     .service-card img {
       width: 100%;
       height: 140px;
       object-fit: cover;
     }
+
     .service-card .card-body {
       padding: 16px;
       display: flex;
@@ -527,24 +733,44 @@
       gap: 6px;
       background: var(--navy-mid);
     }
+
     .service-card h4 {
       font-size: 0.9rem;
       font-weight: 700;
       text-align: center;
       margin: 0;
     }
+
     .service-card span {
       font-size: 0.73rem;
       color: var(--text-muted);
     }
 
     /* ── CONTACT ── */
-    #section6 { background: var(--surface); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+    #section6 {
+      background: var(--surface);
+    }
 
-    .contact-form .form-control { background: var(--navy-mid); }
-    textarea.form-control { resize: vertical; min-height: 120px; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-form .form-control {
+      background: var(--navy-mid);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
 
     .btn-whatsapp {
       display: inline-flex;
@@ -561,27 +787,38 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-whatsapp:hover { background: #1ebe59; transform: translateY(-1px); }
 
-    iframe { border-radius: var(--radius); }
+    .btn-whatsapp:hover {
+      background: #1ebe59;
+      transform: translateY(-1px);
+    }
+
+    iframe {
+      border-radius: var(--radius);
+    }
 
     /* ── FOOTER ── */
     footer {
       background: var(--navy);
-      border-top: 1px solid rgba(255,255,255,0.07);
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
       padding: 24px 20px;
       text-align: center;
       font-size: 0.8rem;
       color: var(--text-muted);
     }
-    footer a { color: var(--gold); text-decoration: none; }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
 
     /* ── TOAST ── */
     .toast {
       position: fixed;
-      bottom: 24px; right: 24px;
+      bottom: 24px;
+      right: 24px;
       background: var(--navy-mid);
-      border: 1px solid rgba(245,164,37,0.3);
+      border: 1px solid rgba(245, 164, 37, 0.3);
       border-left: 4px solid var(--gold);
       color: var(--text);
       padding: 14px 20px;
@@ -594,397 +831,514 @@
       transition: transform 0.3s ease;
       max-width: 320px;
     }
-    .toast.show { transform: translateX(0); }
-    .toast.success { border-left-color: var(--success); }
-    .toast.danger { border-left-color: var(--danger); }
+
+    .toast.show {
+      transform: translateX(0);
+    }
+
+    .toast.success {
+      border-left-color: var(--success);
+    }
+
+    .toast.danger {
+      border-left-color: var(--danger);
+    }
 
     /* ── RESPONSIVE TWEAKS ── */
     @media (max-width: 600px) {
-      .tab-panel { padding: 20px; }
-      .task-toolbar { flex-direction: column; align-items: stretch; }
-      .task-toolbar .btn { justify-content: center; }
+      .tab-panel {
+        padding: 20px;
+      }
+
+      .task-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .task-toolbar .btn {
+        justify-content: center;
+      }
     }
   </style>
 </head>
+
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_DOMINIO",
+    projectId: "TU_PROJECT_ID",
+    storageBucket: "TU_BUCKET",
+    messagingSenderId: "TU_SENDER_ID",
+    appId: "TU_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.loginAdmin = async function () {
+
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    try {
+
+      await signInWithEmailAndPassword(auth, email, password);
+
+      alert("Login correcto");
+
+      document.body.classList.add("admin-mode");
+
+    } catch (error) {
+
+      alert("Credenciales incorrectas");
+
+    }
+
+  }
+
+  window.logoutAdmin = async function () {
+
+    await signOut(auth);
+
+  }
+
+  onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+      document.body.classList.add("admin-mode");
+
+    } else {
+
+      document.body.classList.remove("admin-mode");
+
+    }
+
+  });
+
+</script>
+
+<div id="login-box">
+
+  <input type="email" id="login-email" placeholder="Correo">
+
+  <input type="password" id="login-password" placeholder="Contraseña">
+
+  <button onclick="loginAdmin()">
+    Iniciar Sesión
+  </button>
+
+</div>
+
 <body>
 
-<!-- ══ HEADER ══ -->
-<header>
-  <a href="#section1" class="logo"><em>Sección E</em> · Segundo Año</a>
-  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
-    <i class="fas fa-bars"></i>
-  </button>
-  <nav id="main-nav">
-    <ul>
-      <li><a href="#section1">Inicio</a></li>
-      <li><a href="#section2">Varios</a></li>
-      <li><a href="#section4">Servicios</a></li>
-      <li><a href="#section6">Contacto</a></li>
-    </ul>
-  </nav>
-</header>
+  <!-- ══ HEADER ══ -->
+  <header>
+    <a href="#section1" class="logo"><em>Sección E</em> · Segundo Año</a>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="#section1">Inicio</a></li>
+        <li><a href="#section2">Varios</a></li>
+        <li><a href="#section4">Servicios</a></li>
+        <li><a href="#section6">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- ══ HERO ══ -->
-<section id="section1" class="section" style="padding:0;">
-  <video autoplay muted loop id="bg-video" playsinline>
-    <source src="assets/images/89.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay">
-    <div class="hero-badge">⭐ Aula Virtual</div>
-    <h1>Sección <em>E</em><br>Segundo Año</h1>
-    <p class="hero-motto">Sueñen y sean felices</p>
-    <a href="#section2" class="btn-hero">Iniciar</a>
-  </div>
-</section>
-
-<!-- ══ TABS VARIOS ══ -->
-<section id="section2" class="section">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Centro de <span>Recursos</span></h2>
-      <p>Documentos, organización y tareas de la sección</p>
+  <!-- ══ HERO ══ -->
+  <section id="section1" class="section" style="padding:0;">
+    <video autoplay muted loop id="bg-video" playsinline>
+      <source src="assets/images/89.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay">
+      <div class="hero-badge">⭐ Aula Virtual</div>
+      <h1>Sección <em>E</em><br>Segundo Año</h1>
+      <p class="hero-motto">Sueñen y sean felices</p>
+      <a href="#section2" class="btn-hero">Iniciar</a>
     </div>
+  </section>
 
-    <div class="tabs-wrapper">
-      <div class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab(0)">
-          <i class="fas fa-folder-open" style="margin-right:6px"></i> Documentos
-        </button>
-        <button class="tab-btn" onclick="switchTab(1)">
-          <i class="fas fa-shield-alt" style="margin-right:6px"></i> Administración
-        </button>
-        <button class="tab-btn" onclick="switchTab(2)">
-          <i class="fas fa-tasks" style="margin-right:6px"></i> Tareas
-        </button>
+  <!-- ══ TABS VARIOS ══ -->
+  <section id="section2" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Centro de <span>Recursos</span></h2>
+        <p>Documentos, organización y tareas de la sección</p>
       </div>
 
-      <!-- TAB 1: DOCUMENTOS -->
-      <div class="tab-panel active" id="panel-0">
-        <h4 style="margin-bottom:20px; font-family:'Rajdhani',sans-serif; font-size:1.2rem;">Documentos Importantes</h4>
-        <div class="doc-grid">
-          <a href="https://docs.google.com/spreadsheets/d/1bbfL931W_UpgGHAO6aiUq8qcM0q9gOrS/edit?usp=sharing" target="_blank" class="doc-card">
-            <i class="fas fa-calendar-alt"></i>
-            <h5>Horario de Clases</h5>
-            <p>Ver documento</p>
-          </a>
-          <a href="https://drive.google.com/drive/folders/1rMd3Y6OQYlAhn61mDptYg9R9vPJVRDkH?usp=sharing" target="_blank" class="doc-card">
-            <i class="fas fa-university"></i>
-            <h5>Documentos UCE</h5>
-            <p>Abrir carpeta</p>
-          </a>
-          <a href="https://drive.google.com/drive/folders/1rMd3Y6OQYlAhn61mDptYg9R9vPJVRDkH?usp=sharing" target="_blank" class="doc-card">
-            <i class="fas fa-users"></i>
-            <h5>Grupos de Trabajo</h5>
-            <p>Abrir carpeta</p>
-          </a>
-          <a href="https://docs.google.com/spreadsheets/d/1rNZj38eCXUEh_FulqeM8XROWjxbpYw3i/edit?usp=sharing" target="_blank" class="doc-card">
-            <i class="fas fa-list-ol"></i>
-            <h5>Lista Sección E</h5>
-            <p>Ver lista</p>
-          </a>
-        </div>
-      </div>
-
-      <!-- TAB 2: ADMINISTRACIÓN -->
-      <div class="tab-panel" id="panel-1">
-        <h4 style="margin-bottom:6px; font-family:'Rajdhani',sans-serif; font-size:1.2rem;">Organización de la Sección E</h4>
-        <p style="color:var(--text-muted); font-size:0.83rem; margin-bottom:24px;">Estructura de mando y responsabilidades del segundo año</p>
-
-        <!-- Mando superior -->
-        <div class="org-divider">Mando</div>
-        <div class="admin-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px,1fr));">
-          <div class="role-card">
-            <div class="role-badge"><i class="fas fa-star"></i> Comandante de Sección</div>
-            <h4>Cadete Comandante</h4>
-            <div class="cadete-name" id="r-comandante">— Kdt. Quishpi G. Jeremy —</div>
-            <p>Responsable de la disciplina, conducta y rendimiento general de la sección E. Reporta directamente al oficial instructor.</p>
-          </div>
-          <div class="role-card">
-            <div class="role-badge"><i class="fas fa-chevron-up"></i> Subcomandante</div>
-            <h4>Cadete Subcomandante</h4>
-            <div class="cadete-name" id="r-subcomandante">— Kdt. Ucles M. Edward —</div>
-            <p>Apoya al comandante y lo reemplaza en su ausencia. Coordina las novedades diarias de la sección.</p>
-          </div>
-        </div>
-
-                <!-- Semaneros -->
-        <div class="org-divider">Semaneros</div>
-        <div class="admin-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px,1fr));">
-          <div class="role-card">
-            <div class="role-badge"><i class="fas fa-star"></i> Semanero 1</div>
-            <h4>Cadete Semanero</h4>
-            <div class="cadete-name" id="r-comandante">— Kdt. Hermosa M. Francisco —</div>
-            <p>Responsable del aseo de la sección E.</p>
-          </div>
-          <div class="role-card">
-            <div class="role-badge"><i class="fas fa-chevron-up"></i> Semanero 2</div>
-            <h4>Cadete Semanero</h4>
-            <div class="cadete-name" id="r-subcomandante">— Kdt. Guerrero M. Dennis —</div>
-            <p>Responsable del aseo de la sección E.</p>
-          </div>
-        </div>
-
-        <!-- Secretaría y servicios internos -->
-        <div class="org-divider">Secretaría y Servicios Internos</div>
-        <div class="admin-grid">
-          <div class="role-card">
-            <div class="role-badge"><i class="fas fa-book"></i> Tesorero</div>
-            <h4>Cadete Tesorero</h4>
-            <div class="cadete-name" id="r-secretario">— Kdt. XX —</div>
-            <p>Registro y control de pagos en la sección E</p>
-          </div>
-          <div class="role-card">
-            <div class="role-badge"><i class="fas fa-clipboard-list"></i> Hojas de control</div>
-            <h4>Control de Asistencia</h4>
-            <div class="cadete-name" id="r-guardia">— Kdt. Enriquez C. Samir —</div>
-            <p>Registra asistencia diaria, reporta novedades de personal y elabora partes de guardia.</p>
-          </div>
-          <div class="role-card">
-            <div class="role-badge"><i class="fas fa-tools"></i> Encargado de Material</div>
-            <h4>Logística y Material</h4>
-            <div class="cadete-name" id="r-material">— Nombre del cadete —</div>
-            <p>Custodia y entrega equipos de instrucción, material de aula y recursos de la sección.</p>
-          </div>
-          <div class="role-card">
-            <div class="role-badge"><i class="fas fa-bullhorn"></i> Vocero</div>
-            <h4>Comunicaciones</h4>
-            <div class="cadete-name" id="r-vocero">— Nombre del cadete —</div>
-            <p>Difunde información oficial entre los cadetes y mantiene los canales de comunicación activos.</p>
-          </div>
-        </div>
-
-
-        <p style="margin-top:28px; font-size:0.78rem; color:var(--text-muted);">
-          <i class="fas fa-info-circle"></i> &nbsp;Para actualizar los nombres, contacta al equipo de desarrollo.
-        </p>
-      </div>
-
-      <!-- TAB 3: TAREAS -->
-      <div class="tab-panel" id="panel-2">
-        <div class="task-toolbar">
-          <div>
-            <h4 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; margin:0;">Lista de Tareas</h4>
-            <p style="font-size:0.78rem; color:var(--text-muted); margin:4px 0 0;">Gestión de deberes y entregas de la sección</p>
-          </div>
-          <button class="btn btn-gold" onclick="openModal()">
-            <i class="fas fa-plus"></i> Agregar Tarea
+      <div class="tabs-wrapper">
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab(0)">
+            <i class="fas fa-folder-open" style="margin-right:6px"></i> Documentos
+          </button>
+          <button class="tab-btn" onclick="switchTab(1)">
+            <i class="fas fa-shield-alt" style="margin-right:6px"></i> Administración
+          </button>
+          <button class="tab-btn" onclick="switchTab(2)">
+            <i class="fas fa-tasks" style="margin-right:6px"></i> Tareas
           </button>
         </div>
 
-        <!-- Filtros -->
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
-          <button class="btn btn-sm btn-outline filter-btn active" data-filter="all">Todas</button>
-          <button class="btn btn-sm btn-outline filter-btn" data-filter="Pendiente">Pendientes</button>
-          <button class="btn btn-sm btn-outline filter-btn" data-filter="En proceso">En proceso</button>
-          <button class="btn btn-sm btn-outline filter-btn" data-filter="Completado">Completadas</button>
+        <!-- TAB 1: DOCUMENTOS -->
+        <div class="tab-panel active" id="panel-0">
+          <h4 style="margin-bottom:20px; font-family:'Rajdhani',sans-serif; font-size:1.2rem;">Documentos Importantes
+          </h4>
+          <div class="doc-grid">
+            <a href="https://docs.google.com/spreadsheets/d/1bbfL931W_UpgGHAO6aiUq8qcM0q9gOrS/edit?usp=sharing"
+              target="_blank" class="doc-card">
+              <i class="fas fa-calendar-alt"></i>
+              <h5>Horario de Clases</h5>
+              <p>Ver documento</p>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1rMd3Y6OQYlAhn61mDptYg9R9vPJVRDkH?usp=sharing"
+              target="_blank" class="doc-card">
+              <i class="fas fa-university"></i>
+              <h5>Documentos UCE</h5>
+              <p>Abrir carpeta</p>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1rMd3Y6OQYlAhn61mDptYg9R9vPJVRDkH?usp=sharing"
+              target="_blank" class="doc-card">
+              <i class="fas fa-users"></i>
+              <h5>Grupos de Trabajo</h5>
+              <p>Abrir carpeta</p>
+            </a>
+            <a href="https://docs.google.com/spreadsheets/d/1rNZj38eCXUEh_FulqeM8XROWjxbpYw3i/edit?usp=sharing"
+              target="_blank" class="doc-card">
+              <i class="fas fa-list-ol"></i>
+              <h5>Lista Sección E</h5>
+              <p>Ver lista</p>
+            </a>
+          </div>
         </div>
 
-        <div class="table-responsive">
-          <table id="task-table">
-            <thead>
-              <tr>
-                <th>Materia</th>
-                <th>Tarea / Deber</th>
-                <th>Fecha de Entrega</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody id="task-tbody">
-              <!-- Tasks injected by JS -->
-            </tbody>
-          </table>
-          <div class="empty-state" id="empty-state" style="display:none;">
-            <i class="fas fa-clipboard-check"></i>
-            <p>No hay tareas que mostrar.<br>¡Agrega la primera usando el botón de arriba!</p>
+        <!-- TAB 2: ADMINISTRACIÓN -->
+        <div class="tab-panel" id="panel-1">
+          <h4 style="margin-bottom:6px; font-family:'Rajdhani',sans-serif; font-size:1.2rem;">Organización de la Sección
+            E</h4>
+          <p style="color:var(--text-muted); font-size:0.83rem; margin-bottom:24px;">Estructura de mando y
+            responsabilidades del segundo año</p>
+
+          <!-- Mando superior -->
+          <div class="org-divider">Mando</div>
+          <div class="admin-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px,1fr));">
+            <div class="role-card">
+              <div class="role-badge"><i class="fas fa-star"></i> Comandante de Sección</div>
+              <h4>Cadete Comandante</h4>
+              <div class="cadete-name" id="r-comandante">— Kdt. Quishpi G. Jeremy —</div>
+              <p>Responsable de la disciplina, conducta y rendimiento general de la sección E. Reporta directamente al
+                oficial instructor.</p>
+            </div>
+            <div class="role-card">
+              <div class="role-badge"><i class="fas fa-chevron-up"></i> Subcomandante</div>
+              <h4>Cadete Subcomandante</h4>
+              <div class="cadete-name" id="r-subcomandante">— Kdt. Ucles M. Edward —</div>
+              <p>Apoya al comandante y lo reemplaza en su ausencia. Coordina las novedades diarias de la sección.</p>
+            </div>
+          </div>
+
+          <!-- Semaneros -->
+          <div class="org-divider">Semaneros</div>
+          <div class="admin-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px,1fr));">
+            <div class="role-card">
+              <div class="role-badge"><i class="fas fa-star"></i> Semanero 1</div>
+              <h4>Cadete Semanero</h4>
+              <div class="cadete-name" id="r-comandante">— Kdt. Hermosa M. Francisco —</div>
+              <p>Responsable del aseo de la sección E.</p>
+            </div>
+            <div class="role-card">
+              <div class="role-badge"><i class="fas fa-chevron-up"></i> Semanero 2</div>
+              <h4>Cadete Semanero</h4>
+              <div class="cadete-name" id="r-subcomandante">— Kdt. Guerrero M. Dennis —</div>
+              <p>Responsable del aseo de la sección E.</p>
+            </div>
+          </div>
+
+          <!-- Secretaría y servicios internos -->
+          <div class="org-divider">Secretaría y Servicios Internos</div>
+          <div class="admin-grid">
+            <div class="role-card">
+              <div class="role-badge"><i class="fas fa-book"></i> Tesorero</div>
+              <h4>Cadete Tesorero</h4>
+              <div class="cadete-name" id="r-secretario">— Kdt. XX —</div>
+              <p>Registro y control de pagos en la sección E</p>
+            </div>
+            <div class="role-card">
+              <div class="role-badge"><i class="fas fa-clipboard-list"></i> Hojas de control</div>
+              <h4>Control de Asistencia</h4>
+              <div class="cadete-name" id="r-guardia">— Kdt. Enriquez C. Samir —</div>
+              <p>Registra asistencia diaria, reporta novedades de personal y elabora partes de guardia.</p>
+            </div>
+            <div class="role-card">
+              <div class="role-badge"><i class="fas fa-tools"></i> Encargado de Material</div>
+              <h4>Logística y Material</h4>
+              <div class="cadete-name" id="r-material">— Nombre del cadete —</div>
+              <p>Custodia y entrega equipos de instrucción, material de aula y recursos de la sección.</p>
+            </div>
+            <div class="role-card">
+              <div class="role-badge"><i class="fas fa-bullhorn"></i> Vocero</div>
+              <h4>Comunicaciones</h4>
+              <div class="cadete-name" id="r-vocero">— Nombre del cadete —</div>
+              <p>Difunde información oficial entre los cadetes y mantiene los canales de comunicación activos.</p>
+            </div>
+          </div>
+
+
+          <p style="margin-top:28px; font-size:0.78rem; color:var(--text-muted);">
+            <i class="fas fa-info-circle"></i> &nbsp;Para actualizar los nombres, contacta al equipo de desarrollo.
+          </p>
+        </div>
+
+        <!-- TAB 3: TAREAS -->
+        <div class="tab-panel" id="panel-2">
+          <div class="task-toolbar">
+            <div>
+              <h4 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; margin:0;">Lista de Tareas</h4>
+              <p style="font-size:0.78rem; color:var(--text-muted); margin:4px 0 0;">Gestión de deberes y entregas de la
+                sección</p>
+            </div>
+            <button class="btn btn-gold admin-only" onclick="openModal()">
+              <i class="fas fa-plus"></i> Agregar Tarea
+            </button>
+          </div>
+
+          <!-- Filtros -->
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+            <button class="btn btn-sm btn-outline filter-btn active" data-filter="all">Todas</button>
+            <button class="btn btn-sm btn-outline filter-btn" data-filter="Pendiente">Pendientes</button>
+            <button class="btn btn-sm btn-outline filter-btn" data-filter="En proceso">En proceso</button>
+            <button class="btn btn-sm btn-outline filter-btn" data-filter="Completado">Completadas</button>
+          </div>
+
+          <div class="table-responsive">
+            <table id="task-table">
+              <thead>
+                <tr>
+                  <th>Materia</th>
+                  <th>Tarea / Deber</th>
+                  <th>Fecha de Entrega</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="task-tbody">
+                <!-- Tasks injected by JS -->
+              </tbody>
+            </table>
+            <div class="empty-state" id="empty-state" style="display:none;">
+              <i class="fas fa-clipboard-check"></i>
+              <p>No hay tareas que mostrar.<br>¡Agrega la primera usando el botón de arriba!</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ SERVICIOS ══ -->
-<section id="section4" class="section" style="background:var(--surface);">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Servicios <span>Disponibles</span></h2>
-      <p>Contáctanos directo por WhatsApp</p>
+  <!-- ══ SERVICIOS ══ -->
+  <section id="section4" class="section" style="background:var(--surface);">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Servicios <span>Disponibles</span></h2>
+        <p>Contáctanos directo por WhatsApp</p>
+      </div>
+      <div class="services-grid">
+        <a href="https://wa.me/593986994635?text=Hola,%20quiero%20información%20sobre%20el%20bazar" target="_blank"
+          class="service-card">
+          <img src="assets/images/courses-mm.jpg" alt="Bazar"
+            onerror="this.style.background='#1f3a52';this.style.height='140px'">
+          <div class="card-body">
+            <h4>🛒 Bazar</h4>
+            <span>Contactar</span>
+          </div>
+        </a>
+        <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20bar" target="_blank"
+          class="service-card">
+          <img src="assets/images/courses-mm.jpg" alt="Bar"
+            onerror="this.style.background='#1f3a52';this.style.height='140px'">
+          <div class="card-body">
+            <h4>☕ Bar</h4>
+            <span>Contactar</span>
+          </div>
+        </a>
+        <a href="https://wa.me/593981383829?text=Hola,%20quiero%20información%20sobre%20la%20lavandería" target="_blank"
+          class="service-card">
+          <img src="assets/images/lavanderia.jpg" alt="Lavandería"
+            onerror="this.style.background='#1f3a52';this.style.height='140px'">
+          <div class="card-body">
+            <h4>👕 Lavandería</h4>
+            <span>Contactar</span>
+          </div>
+        </a>
+        <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20internet" target="_blank"
+          class="service-card">
+          <img src="assets/images/inernet.png" alt="Internet"
+            onerror="this.style.background='#1f3a52';this.style.height='140px'">
+          <div class="card-body">
+            <h4>🌐 Internet</h4>
+            <span>Contactar</span>
+          </div>
+        </a>
+        <a href="https://wa.me/593988342258?text=Hola,%20quiero%20información%20sobre%20la%20peluquería" target="_blank"
+          class="service-card">
+          <img src="assets/images/peluqueria.png" alt="Peluquería"
+            onerror="this.style.background='#1f3a52';this.style.height='140px'">
+          <div class="card-body">
+            <h4>✂️ Peluquería</h4>
+            <span>Contactar</span>
+          </div>
+        </a>
+      </div>
     </div>
-    <div class="services-grid">
-      <a href="https://wa.me/593986994635?text=Hola,%20quiero%20información%20sobre%20el%20bazar" target="_blank" class="service-card">
-        <img src="assets/images/courses-mm.jpg" alt="Bazar" onerror="this.style.background='#1f3a52';this.style.height='140px'">
-        <div class="card-body">
-          <h4>🛒 Bazar</h4>
-          <span>Contactar</span>
-        </div>
-      </a>
-      <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20bar" target="_blank" class="service-card">
-        <img src="assets/images/courses-mm.jpg" alt="Bar" onerror="this.style.background='#1f3a52';this.style.height='140px'">
-        <div class="card-body">
-          <h4>☕ Bar</h4>
-          <span>Contactar</span>
-        </div>
-      </a>
-      <a href="https://wa.me/593981383829?text=Hola,%20quiero%20información%20sobre%20la%20lavandería" target="_blank" class="service-card">
-        <img src="assets/images/lavanderia.jpg" alt="Lavandería" onerror="this.style.background='#1f3a52';this.style.height='140px'">
-        <div class="card-body">
-          <h4>👕 Lavandería</h4>
-          <span>Contactar</span>
-        </div>
-      </a>
-      <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20internet" target="_blank" class="service-card">
-        <img src="assets/images/inernet.png" alt="Internet" onerror="this.style.background='#1f3a52';this.style.height='140px'">
-        <div class="card-body">
-          <h4>🌐 Internet</h4>
-          <span>Contactar</span>
-        </div>
-      </a>
-      <a href="https://wa.me/593988342258?text=Hola,%20quiero%20información%20sobre%20la%20peluquería" target="_blank" class="service-card">
-        <img src="assets/images/peluqueria.png" alt="Peluquería" onerror="this.style.background='#1f3a52';this.style.height='140px'">
-        <div class="card-body">
-          <h4>✂️ Peluquería</h4>
-          <span>Contactar</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ CONTACTO ══ -->
-<section id="section6" class="section">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Sugerencias y <span>Opiniones</span></h2>
-      <p>Tu mensaje llega directo por WhatsApp</p>
+  <!-- ══ CONTACTO ══ -->
+  <section id="section6" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Sugerencias y <span>Opiniones</span></h2>
+        <p>Tu mensaje llega directo por WhatsApp</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-form">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="contact-name" placeholder="Tu nombre completo">
+          </div>
+          <div class="form-group">
+            <label>Mensaje o Sugerencia</label>
+            <textarea class="form-control" id="contact-msg" rows="5"
+              placeholder="Escribe tu mensaje aquí..."></textarea>
+          </div>
+          <button class="btn-whatsapp" onclick="sendWhatsapp()">
+            <i class="fab fa-whatsapp" style="font-size:1.1rem"></i> Enviar por WhatsApp
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="contact-grid">
-      <div class="contact-form">
-        <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" class="form-control" id="contact-name" placeholder="Tu nombre completo">
+  </section>
+
+  <footer>
+    <p>© 2026 Sección E &mdash; Segundo Año &nbsp;|&nbsp;
+      <a href="https://github.com/DennisCatana/School-Profile-Website" target="_blank">Dark</a>
+    </p>
+  </footer>
+
+  <!-- ══ MODAL AGREGAR TAREA ══ -->
+  <div class="modal-backdrop" id="modal" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>📋 Nueva Tarea</h3>
+        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div class="form-group">
+        <label>Materia *</label>
+        <input type="text" class="form-control" id="task-subject" placeholder="Ej: Matemática, Lenguaje...">
+      </div>
+      <div class="form-group">
+        <label>Descripción de la Tarea *</label>
+        <input type="text" class="form-control" id="task-desc" placeholder="Describe el deber o tarea...">
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0">
+          <label>Fecha de Entrega *</label>
+          <input type="date" class="form-control" id="task-date">
         </div>
-        <div class="form-group">
-          <label>Mensaje o Sugerencia</label>
-          <textarea class="form-control" id="contact-msg" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <div class="form-group" style="margin-bottom:0">
+          <label>Estado</label>
+          <select class="form-control" id="task-status">
+            <option value="Pendiente">Pendiente</option>
+            <option value="En proceso">En proceso</option>
+            <option value="Completado">Completado</option>
+          </select>
         </div>
-        <button class="btn-whatsapp" onclick="sendWhatsapp()">
-          <i class="fab fa-whatsapp" style="font-size:1.1rem"></i> Enviar por WhatsApp
+      </div>
+
+      <div style="display:flex; gap:12px; margin-top:28px;">
+        <button class="btn btn-outline" style="flex:1" onclick="closeModal()">Cancelar</button>
+        <button class="btn btn-gold" style="flex:2" onclick="saveTask()">
+          <i class="fas fa-save"></i> Guardar Tarea
         </button>
       </div>
     </div>
   </div>
-</section>
 
-<footer>
-  <p>© 2026 Sección E &mdash; Segundo Año &nbsp;|&nbsp;
-    <a href="https://github.com/DennisCatana/School-Profile-Website" target="_blank">Dark</a>
-  </p>
-</footer>
+  <!-- ══ TOAST ══ -->
+  <div class="toast" id="toast"></div>
 
-<!-- ══ MODAL AGREGAR TAREA ══ -->
-<div class="modal-backdrop" id="modal" onclick="closeModalOutside(event)">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>📋 Nueva Tarea</h3>
-      <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
-    </div>
-
-    <div class="form-group">
-      <label>Materia *</label>
-      <input type="text" class="form-control" id="task-subject" placeholder="Ej: Matemática, Lenguaje...">
-    </div>
-    <div class="form-group">
-      <label>Descripción de la Tarea *</label>
-      <input type="text" class="form-control" id="task-desc" placeholder="Describe el deber o tarea...">
-    </div>
-    <div class="form-row">
-      <div class="form-group" style="margin-bottom:0">
-        <label>Fecha de Entrega *</label>
-        <input type="date" class="form-control" id="task-date">
-      </div>
-      <div class="form-group" style="margin-bottom:0">
-        <label>Estado</label>
-        <select class="form-control" id="task-status">
-          <option value="Pendiente">Pendiente</option>
-          <option value="En proceso">En proceso</option>
-          <option value="Completado">Completado</option>
-        </select>
-      </div>
-    </div>
-
-    <div style="display:flex; gap:12px; margin-top:28px;">
-      <button class="btn btn-outline" style="flex:1" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-gold" style="flex:2" onclick="saveTask()">
-        <i class="fas fa-save"></i> Guardar Tarea
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ TOAST ══ -->
-<div class="toast" id="toast"></div>
-
-<script>
-  /* ── NAV ── */
-  function toggleMenu() {
-    document.getElementById('main-nav').classList.toggle('open');
-  }
-  document.querySelectorAll('#main-nav a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('main-nav').classList.remove('open'));
-  });
-
-  /* ── TABS ── */
-  function switchTab(idx) {
-    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
-    document.querySelectorAll('.tab-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
-  }
-
-  /* ── TASKS (localStorage) ── */
-  const STORAGE_KEY = 'seccion_e_tasks';
-
-  let tasks = [];
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    tasks = saved ? JSON.parse(saved) : defaultTasks();
-  } catch(e) { tasks = defaultTasks(); }
-
-  function defaultTasks() {
-    return [
-      { id: 1, subject: 'Matemática', desc: 'Resolver ejercicios página 25', date: '2026-06-12', status: 'Pendiente' },
-      { id: 2, subject: 'Lenguaje',   desc: 'Leer capítulo 3',               date: '2026-06-13', status: 'En proceso' },
-      { id: 3, subject: 'Inglés',     desc: 'Aprender vocabulario',           date: '2026-06-14', status: 'Completado' },
-    ];
-  }
-
-  function saveTasks() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); } catch(e) {}
-  }
-
-  let currentFilter = 'all';
-
-  function renderTasks() {
-    const tbody = document.getElementById('task-tbody');
-    const empty = document.getElementById('empty-state');
-    const filtered = currentFilter === 'all' ? tasks : tasks.filter(t => t.status === currentFilter);
-
-    if (!filtered.length) {
-      tbody.innerHTML = '';
-      empty.style.display = 'block';
-      return;
+  <script>
+    /* ── NAV ── */
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('open');
     }
-    empty.style.display = 'none';
+    document.querySelectorAll('#main-nav a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('main-nav').classList.remove('open'));
+    });
 
-    tbody.innerHTML = filtered.map(t => {
-      const statusBadge = {
-        'Pendiente':  '<span class="badge badge-danger">Pendiente</span>',
-        'En proceso': '<span class="badge badge-warning">En proceso</span>',
-        'Completado': '<span class="badge badge-success">Completado</span>',
-      }[t.status] || `<span class="badge badge-info">${t.status}</span>`;
+    /* ── TABS ── */
+    function switchTab(idx) {
+      document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+      document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+    }
 
-      const dateStr = t.date ? new Date(t.date + 'T00:00:00').toLocaleDateString('es-EC', {day:'2-digit',month:'short',year:'numeric'}) : '—';
+    /* ── TASKS (localStorage) ── */
+    const STORAGE_KEY = 'seccion_e_tasks';
 
-      return `<tr>
+    let tasks = [];
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      tasks = saved ? JSON.parse(saved) : defaultTasks();
+    } catch (e) { tasks = defaultTasks(); }
+
+    function defaultTasks() {
+      return [
+        { id: 1, subject: 'Matemática', desc: 'Resolver ejercicios página 25', date: '2026-06-12', status: 'Pendiente' },
+        { id: 2, subject: 'Lenguaje', desc: 'Leer capítulo 3', date: '2026-06-13', status: 'En proceso' },
+        { id: 3, subject: 'Inglés', desc: 'Aprender vocabulario', date: '2026-06-14', status: 'Completado' },
+      ];
+    }
+
+    function saveTasks() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); } catch (e) { }
+    }
+
+    let currentFilter = 'all';
+
+    function renderTasks() {
+      const tbody = document.getElementById('task-tbody');
+      const empty = document.getElementById('empty-state');
+      const filtered = currentFilter === 'all' ? tasks : tasks.filter(t => t.status === currentFilter);
+
+      if (!filtered.length) {
+        tbody.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+
+      tbody.innerHTML = filtered.map(t => {
+        const statusBadge = {
+          'Pendiente': '<span class="badge badge-danger">Pendiente</span>',
+          'En proceso': '<span class="badge badge-warning">En proceso</span>',
+          'Completado': '<span class="badge badge-success">Completado</span>',
+        }[t.status] || `<span class="badge badge-info">${t.status}</span>`;
+
+        const dateStr = t.date ? new Date(t.date + 'T00:00:00').toLocaleDateString('es-EC', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
+
+        return `<tr>
         <td><strong>${t.subject}</strong></td>
         <td>${t.desc}</td>
         <td>${dateStr}</td>
@@ -992,7 +1346,7 @@
         <td>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
             <select class="form-control" style="padding:4px 8px;font-size:0.75rem;width:auto;" onchange="updateStatus(${t.id}, this.value)">
-              ${['Pendiente','En proceso','Completado'].map(s => `<option${s===t.status?' selected':''}>${s}</option>`).join('')}
+              ${['Pendiente', 'En proceso', 'Completado'].map(s => `<option${s === t.status ? ' selected' : ''}>${s}</option>`).join('')}
             </select>
             <button class="btn btn-sm btn-danger" onclick="deleteTask(${t.id})" title="Eliminar">
               <i class="fas fa-trash"></i>
@@ -1000,91 +1354,92 @@
           </div>
         </td>
       </tr>`;
-    }).join('');
-  }
+      }).join('');
+    }
 
-  function updateStatus(id, newStatus) {
-    const t = tasks.find(t => t.id === id);
-    if (t) { t.status = newStatus; saveTasks(); renderTasks(); }
-  }
+    function updateStatus(id, newStatus) {
+      const t = tasks.find(t => t.id === id);
+      if (t) { t.status = newStatus; saveTasks(); renderTasks(); }
+    }
 
-  function deleteTask(id) {
-    tasks = tasks.filter(t => t.id !== id);
-    saveTasks();
-    renderTasks();
-    showToast('Tarea eliminada', 'danger');
-  }
-
-  /* ── MODAL ── */
-  function openModal() {
-    document.getElementById('task-date').value = new Date().toISOString().split('T')[0];
-    document.getElementById('modal').classList.add('open');
-  }
-  function closeModal() { document.getElementById('modal').classList.remove('open'); }
-  function closeModalOutside(e) { if (e.target.id === 'modal') closeModal(); }
-
-  function saveTask() {
-    const subject = document.getElementById('task-subject').value.trim();
-    const desc    = document.getElementById('task-desc').value.trim();
-    const date    = document.getElementById('task-date').value;
-    const status  = document.getElementById('task-status').value;
-
-    if (!subject || !desc || !date) { showToast('Completa todos los campos requeridos', 'danger'); return; }
-
-    tasks.push({ id: Date.now(), subject, desc, date, status });
-    saveTasks();
-    renderTasks();
-    closeModal();
-    showToast('¡Tarea agregada correctamente!', 'success');
-
-    document.getElementById('task-subject').value = '';
-    document.getElementById('task-desc').value = '';
-    document.getElementById('task-status').value = 'Pendiente';
-  }
-
-  /* ── FILTERS ── */
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
+    function deleteTask(id) {
+      tasks = tasks.filter(t => t.id !== id);
+      saveTasks();
       renderTasks();
+      showToast('Tarea eliminada', 'danger');
+    }
+
+    /* ── MODAL ── */
+    function openModal() {
+      document.getElementById('task-date').value = new Date().toISOString().split('T')[0];
+      document.getElementById('modal').classList.add('open');
+    }
+    function closeModal() { document.getElementById('modal').classList.remove('open'); }
+    function closeModalOutside(e) { if (e.target.id === 'modal') closeModal(); }
+
+    function saveTask() {
+      const subject = document.getElementById('task-subject').value.trim();
+      const desc = document.getElementById('task-desc').value.trim();
+      const date = document.getElementById('task-date').value;
+      const status = document.getElementById('task-status').value;
+
+      if (!subject || !desc || !date) { showToast('Completa todos los campos requeridos', 'danger'); return; }
+
+      tasks.push({ id: Date.now(), subject, desc, date, status });
+      saveTasks();
+      renderTasks();
+      closeModal();
+      showToast('¡Tarea agregada correctamente!', 'success');
+
+      document.getElementById('task-subject').value = '';
+      document.getElementById('task-desc').value = '';
+      document.getElementById('task-status').value = 'Pendiente';
+    }
+
+    /* ── FILTERS ── */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderTasks();
+      });
     });
-  });
 
-  /* ── TOAST ── */
-  let toastTimer;
-  function showToast(msg, type='success') {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = `toast show ${type}`;
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
-  }
+    /* ── TOAST ── */
+    let toastTimer;
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = `toast show ${type}`;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+    }
 
-  /* ── WHATSAPP ── */
-  function sendWhatsapp() {
-    const name = document.getElementById('contact-name').value.trim();
-    const msg  = document.getElementById('contact-msg').value.trim();
-    if (!name || !msg) { showToast('Por favor completa nombre y mensaje', 'danger'); return; }
-    const url = `https://wa.me/593986618968?text=${encodeURIComponent('Sugerencia de ' + name + ':\n' + msg)}`;
-    window.open(url, '_blank');
-  }
+    /* ── WHATSAPP ── */
+    function sendWhatsapp() {
+      const name = document.getElementById('contact-name').value.trim();
+      const msg = document.getElementById('contact-msg').value.trim();
+      if (!name || !msg) { showToast('Por favor completa nombre y mensaje', 'danger'); return; }
+      const url = `https://wa.me/593986618968?text=${encodeURIComponent('Sugerencia de ' + name + ':\n' + msg)}`;
+      window.open(url, '_blank');
+    }
 
-  /* ── SCROLL ACTIVE NAV ── */
-  const sections = document.querySelectorAll('[id^="section"]');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    /* ── SCROLL ACTIVE NAV ── */
+    const sections = document.querySelectorAll('[id^="section"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.id;
+      });
+      document.querySelectorAll('#main-nav a').forEach(a => {
+        a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
     });
-    document.querySelectorAll('#main-nav a').forEach(a => {
-      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  });
 
-  /* ── INIT ── */
-  renderTasks();
-</script>
+    /* ── INIT ── */
+    renderTasks();
+  </script>
 </body>
+
 </html>
