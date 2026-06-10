@@ -35,14 +35,6 @@
       padding: 0;
     }
 
-    .admin-only {
-      display: none;
-    }
-
-    .admin-mode .admin-only {
-      display: flex;
-    }
-
     html {
       scroll-behavior: smooth;
     }
@@ -52,6 +44,19 @@
       background: var(--navy);
       color: var(--text);
       overflow-x: hidden;
+    }
+
+    /* ── ADMIN-ONLY elements ── */
+    .admin-only {
+      display: none !important;
+    }
+
+    body.admin-mode .admin-only {
+      display: inline-flex !important;
+    }
+
+    body.admin-mode .admin-only.block-flex {
+      display: flex !important;
     }
 
     /* ── HEADER ── */
@@ -84,6 +89,12 @@
       font-style: normal;
     }
 
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -108,7 +119,27 @@
       background: rgba(245, 164, 37, 0.1);
     }
 
-    /* hamburger */
+    /* Admin indicator pill in header */
+    .admin-pill {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 164, 37, 0.15);
+      border: 1px solid rgba(245, 164, 37, 0.4);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    body.admin-mode .admin-pill {
+      display: flex;
+    }
+
     .menu-toggle {
       display: none;
       background: none;
@@ -438,7 +469,7 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* ── TASKS TABLE ── */
+    /* ── TASK TOOLBAR ── */
     .task-toolbar {
       display: flex;
       align-items: center;
@@ -448,6 +479,7 @@
       margin-bottom: 20px;
     }
 
+    /* ── BUTTONS ── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -498,6 +530,41 @@
       filter: brightness(1.1);
     }
 
+    .btn-ghost {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* ── FILTER ROW ── */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    .filter-row .sep {
+      width: 1px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.12);
+      margin: 0 4px;
+    }
+
+    /* ── TABLE ── */
     .table-responsive {
       overflow-x: auto;
       border-radius: var(--radius);
@@ -507,7 +574,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.85rem;
-      min-width: 540px;
+      min-width: 600px;
     }
 
     thead th {
@@ -537,6 +604,32 @@
       color: var(--text);
     }
 
+    /* ── VENCIDA row highlight ── */
+    tbody tr.row-vencida {
+      background: rgba(234, 84, 85, 0.06);
+    }
+
+    tbody tr.row-vencida td {
+      color: #f0a0a0;
+    }
+
+    tbody tr.row-vencida:hover {
+      background: rgba(234, 84, 85, 0.1);
+    }
+
+    .date-vencida {
+      color: var(--danger) !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .date-vencida i {
+      font-size: 0.75rem;
+    }
+
+    /* ── BADGES ── */
     .badge {
       display: inline-block;
       padding: 3px 10px;
@@ -565,6 +658,17 @@
       color: var(--info);
     }
 
+    /* Tipo badge */
+    .badge-uce {
+      background: rgba(0, 207, 232, 0.13);
+      color: var(--info);
+    }
+
+    .badge-policial {
+      background: rgba(245, 164, 37, 0.13);
+      color: var(--gold);
+    }
+
     .empty-state {
       text-align: center;
       padding: 48px 24px;
@@ -575,13 +679,14 @@
       font-size: 3rem;
       margin-bottom: 12px;
       color: rgba(255, 255, 255, 0.15);
+      display: block;
     }
 
     .empty-state p {
       font-size: 0.9rem;
     }
 
-    /* ── MODAL ── */
+    /* ── MODALS ── */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -694,82 +799,101 @@
       }
     }
 
+    /* login modal special */
+    #login-modal .modal {
+      max-width: 360px;
+    }
+
+    .login-icon {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      color: var(--gold);
+    }
+
+    .login-error {
+      color: var(--danger);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: -8px;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .login-error.show {
+      display: block;
+    }
+
     /* ── SERVICIOS ── */
-.services-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 150px); /* tamaño fijo pequeño */
-  gap: 14px;
-}
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 150px);
+      gap: 14px;
+    }
 
-/* CARD */
-.service-card{
-  width: 150px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid rgba(255,255,255,.08);
-  text-decoration: none;
-  color: var(--text);
-  transition: .25s;
-}
+    .service-card {
+      width: 150px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, .08);
+      text-decoration: none;
+      color: var(--text);
+      transition: .25s;
+    }
 
-.service-card:hover{
-  transform: translateY(-4px);
-  border-color: var(--gold);
-}
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
 
-/* IMAGEN */
-.service-card img{
-  width: 100%;
-  height: 85px; /* más pequeña */
-  object-fit: cover;
-}
+    .service-card img {
+      width: 100%;
+      height: 85px;
+      object-fit: cover;
+    }
 
-/* CONTENIDO */
-.card-body{
-  padding: 10px 8px;
-  text-align: center;
-  background: var(--navy-mid);
-}
+    .card-body {
+      padding: 10px 8px;
+      text-align: center;
+      background: var(--navy-mid);
+    }
 
-.card-body h4{
-  margin: 0;
-  font-size: .82rem;
-}
+    .card-body h4 {
+      margin: 0;
+      font-size: .82rem;
+    }
 
-.card-body span{
-  font-size: .68rem;
-  color: var(--text-muted);
-}
+    .card-body span {
+      font-size: .68rem;
+      color: var(--text-muted);
+    }
 
-/* TABLET */
-@media (max-width: 900px){
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 140px);
+        justify-content: center;
+      }
 
-  .services-grid{
-    grid-template-columns: repeat(3, 140px);
-    justify-content: center;
-  }
+      .service-card {
+        width: 140px;
+      }
+    }
 
-  .service-card{
-    width: 140px;
-  }
-}
+    @media (max-width: 500px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+      }
 
-/* CELULAR */
-@media (max-width: 500px){
-
-  .services-grid{
-    grid-template-columns: 2fr;
-    justify-items: center;
-  }
-
-  .service-card{
-    width: 180px;
-  }
-}
+      .service-card {
+        width: 100%;
+      }
+    }
 
     /* ── CONTACT ── */
-    #section6 {
+    #section4 {
       background: var(--surface);
     }
 
@@ -783,10 +907,6 @@
       .contact-grid {
         grid-template-columns: 1fr;
       }
-    }
-
-    .contact-form .form-control {
-      background: var(--navy-mid);
     }
 
     textarea.form-control {
@@ -866,7 +986,6 @@
       border-left-color: var(--danger);
     }
 
-    /* ── RESPONSIVE TWEAKS ── */
     @media (max-width: 600px) {
       .tab-panel {
         padding: 20px;
@@ -889,9 +1008,15 @@
   <!-- ══ HEADER ══ -->
   <header>
     <a href="#section1" class="logo"><em>Sección E</em> · Segundo Año</a>
-    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
-      <i class="fas fa-bars"></i>
-    </button>
+    <div class="header-right">
+      <!-- Muestra solo en modo admin -->
+      <span class="admin-pill" onclick="logout()" title="Cerrar sesión admin">
+        <i class="fas fa-shield-alt"></i> Admin &nbsp;·&nbsp; <i class="fas fa-sign-out-alt"></i>
+      </span>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
     <nav id="main-nav">
       <ul>
         <li><a href="#section1">Inicio</a></li>
@@ -910,7 +1035,7 @@
     <div class="hero-overlay">
       <div class="hero-badge">⭐ Aula Virtual</div>
       <h1>Sección <em>E</em><br>Segundo Año</h1>
-      <p class="hero-motto">Sueñen y sean felices</p>
+      <p class="hero-motto">Sueñen y sean felices 💙</p>
       <a href="#section2" class="btn-hero">Iniciar</a>
     </div>
   </section>
@@ -975,70 +1100,65 @@
           <p style="color:var(--text-muted); font-size:0.83rem; margin-bottom:24px;">Estructura de mando y
             responsabilidades del segundo año</p>
 
-          <!-- Mando superior -->
           <div class="org-divider">Mando</div>
           <div class="admin-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px,1fr));">
             <div class="role-card">
               <div class="role-badge"><i class="fas fa-star"></i> Comandante de Sección</div>
               <h4>Cadete Comandante</h4>
-              <div class="cadete-name" id="r-comandante">— Kdt. Quishpi G. Jeremy —</div>
-              <p>Responsable de la disciplina, conducta y rendimiento general de la sección E. Reporta directamente al
-                oficial instructor.</p>
+              <div class="cadete-name">— Kdt. Quishpi G. Jeremy —</div>
+              <p>Responsable de la disciplina, conducta y rendimiento general de la sección E.</p>
             </div>
             <div class="role-card">
               <div class="role-badge"><i class="fas fa-chevron-up"></i> Subcomandante</div>
               <h4>Cadete Subcomandante</h4>
-              <div class="cadete-name" id="r-subcomandante">— Kdt. Ucles M. Edward —</div>
-              <p>Apoya al comandante y lo reemplaza en su ausencia. Coordina las novedades diarias de la sección.</p>
+              <div class="cadete-name">— Kdt. Ucles M. Edward —</div>
+              <p>Apoya al comandante y lo reemplaza en su ausencia. Coordina las novedades diarias.</p>
             </div>
           </div>
 
-          <!-- Semaneros -->
           <div class="org-divider">Semaneros</div>
           <div class="admin-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px,1fr));">
             <div class="role-card">
-              <div class="role-badge"><i class="fas fa-star"></i> Semanero 1</div>
+              <div class="role-badge"><i class="fas fa-broom"></i> Semanero 1</div>
               <h4>Cadete Semanero</h4>
-              <div class="cadete-name" id="r-comandante">— Kdt. Hermosa M. Francisco —</div>
+              <div class="cadete-name">— Kdt. Hermosa M. Francisco —</div>
               <p>Responsable del aseo de la sección E.</p>
             </div>
             <div class="role-card">
-              <div class="role-badge"><i class="fas fa-chevron-up"></i> Semanero 2</div>
+              <div class="role-badge"><i class="fas fa-broom"></i> Semanero 2</div>
               <h4>Cadete Semanero</h4>
-              <div class="cadete-name" id="r-subcomandante">— Kdt. Guerrero M. Dennis —</div>
+              <div class="cadete-name">— Kdt. Guerrero M. Dennis —</div>
               <p>Responsable del aseo de la sección E.</p>
             </div>
           </div>
 
-          <!-- Secretaría y servicios internos -->
           <div class="org-divider">Secretaría y Servicios Internos</div>
           <div class="admin-grid">
             <div class="role-card">
-              <div class="role-badge"><i class="fas fa-book"></i> Tesorero</div>
+              <div class="role-badge"><i class="fas fa-coins"></i> Tesorero</div>
               <h4>Cadete Tesorero</h4>
-              <div class="cadete-name" id="r-secretario">— Kdt. XX —</div>
-              <p>Registro y control de pagos en la sección E</p>
+              <div class="cadete-name">— Kdt. XX —</div>
+              <p>Registro y control de pagos en la sección E.</p>
             </div>
             <div class="role-card">
-              <div class="role-badge"><i class="fas fa-clipboard-list"></i> Hojas de control</div>
+              <div class="role-badge"><i class="fas fa-clipboard-list"></i> Hojas de Control</div>
               <h4>Control de Asistencia</h4>
-              <div class="cadete-name" id="r-guardia">— Kdt. Enriquez C. Samir —</div>
+              <div class="cadete-name">— Kdt. Enriquez C. Samir —</div>
               <p>Registra asistencia diaria, reporta novedades de personal y elabora partes de guardia.</p>
             </div>
             <div class="role-card">
               <div class="role-badge"><i class="fas fa-tools"></i> Encargado de Material</div>
               <h4>Logística y Material</h4>
-              <div class="cadete-name" id="r-material">— Nombre del cadete —</div>
+              <div class="cadete-name">— Nombre del cadete —</div>
               <p>Custodia y entrega equipos de instrucción, material de aula y recursos de la sección.</p>
             </div>
             <div class="role-card">
               <div class="role-badge"><i class="fas fa-bullhorn"></i> Vocero</div>
               <h4>Comunicaciones</h4>
-              <div class="cadete-name" id="r-vocero">— Nombre del cadete —</div>
+              <div class="cadete-name">— Nombre del cadete —</div>
               <p>Difunde información oficial entre los cadetes y mantiene los canales de comunicación activos.</p>
             </div>
           </div>
-
 
           <p style="margin-top:28px; font-size:0.78rem; color:var(--text-muted);">
             <i class="fas fa-info-circle"></i> &nbsp;Para actualizar los nombres, contacta al equipo de desarrollo.
@@ -1050,40 +1170,57 @@
           <div class="task-toolbar">
             <div>
               <h4 style="font-family:'Rajdhani',sans-serif; font-size:1.2rem; margin:0;">Lista de Tareas</h4>
-              <p style="font-size:0.78rem; color:var(--text-muted); margin:4px 0 0;">Gestión de deberes y entregas de la
-                sección</p>
+              <p style="font-size:0.78rem; color:var(--text-muted); margin:4px 0 0;">Deberes y entregas de la sección
+              </p>
             </div>
-            <button class="btn btn-gold admin-only" onclick="openModal()">
-              <i class="fas fa-plus"></i> Agregar Tarea
-            </button>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <!-- Solo admin ve este botón -->
+              <button class="btn btn-gold admin-only" onclick="openModal()">
+                <i class="fas fa-plus"></i> Nueva Tarea
+              </button>
+              <!-- Login discreto para admin -->
+              <button class="btn btn-ghost" id="admin-login-btn" onclick="openLoginModal()"
+                title="Acceso administrador">
+                <i class="fas fa-lock"></i>
+              </button>
+            </div>
           </div>
 
-          <!-- Filtros -->
-          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
-            <button class="btn btn-sm btn-outline filter-btn active" data-filter="all">Todas</button>
-            <button class="btn btn-sm btn-outline filter-btn" data-filter="Pendiente">Pendientes</button>
-            <button class="btn btn-sm btn-outline filter-btn" data-filter="En proceso">En proceso</button>
-            <button class="btn btn-sm btn-outline filter-btn" data-filter="Completado">Completadas</button>
+          <!-- Filtros: estado + tipo -->
+          <div class="filter-row">
+            <button class="btn btn-sm btn-outline filter-btn active" data-filter-status="all">Todas</button>
+            <button class="btn btn-sm btn-outline filter-btn" data-filter-status="Pendiente">Pendientes</button>
+            <button class="btn btn-sm btn-outline filter-btn" data-filter-status="En proceso">En proceso</button>
+            <button class="btn btn-sm btn-outline filter-btn" data-filter-status="Completado">Completadas</button>
+
+            <div class="sep"></div>
+
+            <button class="btn btn-sm btn-outline filter-tipo active" data-filter-tipo="all">Todas</button>
+            <button class="btn btn-sm btn-outline filter-tipo" data-filter-tipo="UCE">
+              <i class="fas fa-university" style="font-size:0.7rem"></i> UCE
+            </button>
+            <button class="btn btn-sm btn-outline filter-tipo" data-filter-tipo="Eje Policial">
+              <i class="fas fa-shield-alt" style="font-size:0.7rem"></i> Eje Policial
+            </button>
           </div>
 
           <div class="table-responsive">
             <table id="task-table">
               <thead>
                 <tr>
+                  <th>Tipo</th>
                   <th>Materia</th>
                   <th>Tarea / Deber</th>
                   <th>Fecha de Entrega</th>
                   <th>Estado</th>
-                  <th>Acciones</th>
+                  <th class="admin-only">Acciones</th>
                 </tr>
               </thead>
-              <tbody id="task-tbody">
-                <!-- Tasks injected by JS -->
-              </tbody>
+              <tbody id="task-tbody"></tbody>
             </table>
             <div class="empty-state" id="empty-state" style="display:none;">
               <i class="fas fa-clipboard-check"></i>
-              <p>No hay tareas que mostrar.<br>¡Agrega la primera usando el botón de arriba!</p>
+              <p>No hay tareas que mostrar.</p>
             </div>
           </div>
         </div>
@@ -1091,111 +1228,84 @@
     </div>
   </section>
 
-  <!-- ══ formación ══ -->
+  <!-- ══ FORMACIÓN ══ -->
   <section id="section3" class="section" style="background:var(--surface);">
     <div class="container">
       <div class="section-heading">
         <h2>Tipos de <span>Formación</span></h2>
       </div>
-      <div>
-        <p>Módulo en contrucción ...</p> 
-        <p>Esto tardará un momento ...</p>
-      </div>
+      <p style="color:var(--text-muted);">Módulo en construcción … Esto tardará un momento.</p>
     </div>
   </section>
 
   <!-- ══ CONTACTOS ══ -->
   <section id="section4" class="section">
     <div class="container">
-
       <div class="contact-grid">
-
-        <!-- IZQUIERDA -->
-
+        <!-- IZQUIERDA: servicios -->
         <div>
           <div class="section-heading">
             <h2>Servicios <span>Disponibles</span></h2>
             <p>Contáctanos directo por WhatsApp</p>
           </div>
-
           <div class="services-grid">
-
             <a href="https://wa.me/593986994635?text=Hola,%20quiero%20información%20sobre%20el%20bazar" target="_blank"
-          class="service-card">
-              <img src="assets/images/Barquilete.png" alt="Bazar">
+              class="service-card">
+              <img src="assets/images/Barquilete.png" alt="Bazar" onerror="this.style.background='#1f3a52'">
               <div class="card-body">
-                <h4>Bazar</h4>
-                <span>Contactar</span>
+                <h4>Bazar</h4><span>Contactar</span>
               </div>
             </a>
-
             <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20bar" target="_blank"
-          class="service-card">
-              <img src="assets/images/bar.jpg" alt="Bar">
+              class="service-card">
+              <img src="assets/images/bar.jpg" alt="Bar" onerror="this.style.background='#1f3a52'">
               <div class="card-body">
-                <h4>Bar</h4>
-                <span>Contactar</span>
+                <h4>Bar</h4><span>Contactar</span>
               </div>
             </a>
-
-            <a href="https://wa.me/593981383829?text=Hola,%20quiero%20información%20sobre%20la%20lavandería" target="_blank"
-          class="service-card">
-              <img src="assets/images/lavanderia.png" alt="Lavandería">
+            <a href="https://wa.me/593981383829?text=Hola,%20quiero%20información%20sobre%20la%20lavandería"
+              target="_blank" class="service-card">
+              <img src="assets/images/lavanderia.png" alt="Lavandería" onerror="this.style.background='#1f3a52'">
               <div class="card-body">
-                <h4>Lavandería</h4>
-                <span>Contactar</span>
+                <h4>Lavandería</h4><span>Contactar</span>
               </div>
             </a>
-
-            <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20internet" target="_blank"
-          class="service-card">
-              <img src="assets/images/inernet.png" alt="Internet">
+            <a href="https://wa.me/593992900904?text=Hola,%20quiero%20información%20sobre%20el%20internet"
+              target="_blank" class="service-card">
+              <img src="assets/images/inernet.png" alt="Internet" onerror="this.style.background='#1f3a52'">
               <div class="card-body">
-                <h4>Internet</h4>
-                <span>Contactar</span>
+                <h4>Internet</h4><span>Contactar</span>
               </div>
             </a>
-
-            <a href="https://wa.me/593988342258?text=Hola,%20quiero%20información%20sobre%20la%20peluquería" target="_blank"
-          class="service-card">
-              <img src="assets/images/peluqueria.png" alt="Peluquería">
+            <a href="https://wa.me/593988342258?text=Hola,%20quiero%20información%20sobre%20la%20peluquería"
+              target="_blank" class="service-card">
+              <img src="assets/images/peluqueria.png" alt="Peluquería" onerror="this.style.background='#1f3a52'">
               <div class="card-body">
-                <h4>Peluquería</h4>
-                <span>Contactar</span>
+                <h4>Peluquería</h4><span>Contactar</span>
               </div>
             </a>
-
           </div>
         </div>
 
-        <!-- DERECHA -->
+        <!-- DERECHA: contacto -->
         <div>
           <div class="section-heading">
             <h2>Sugerencias y <span>Opiniones</span></h2>
             <p>Tu mensaje llega directo por WhatsApp</p>
           </div>
-
-          <div class="contact-form">
-
-            <div class="form-group">
-              <label>Nombre</label>
-              <input type="text" class="form-control" id="contact-name" placeholder="Tu nombre completo">
-            </div>
-
-            <div class="form-group">
-              <label>Mensaje o Sugerencia</label>
-              <textarea class="form-control" id="contact-msg" rows="5"
-                placeholder="Escribe tu mensaje aquí..."></textarea>
-            </div>
-
-            <button class="btn-whatsapp" onclick="sendWhatsapp()">
-              <i class="fab fa-whatsapp"></i>
-              Enviar por WhatsApp
-            </button>
-
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="contact-name" placeholder="Tu nombre completo">
           </div>
+          <div class="form-group">
+            <label>Mensaje o Sugerencia</label>
+            <textarea class="form-control" id="contact-msg" rows="5"
+              placeholder="Escribe tu mensaje aquí..."></textarea>
+          </div>
+          <button class="btn-whatsapp" onclick="sendWhatsapp()">
+            <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+          </button>
         </div>
-
       </div>
     </div>
   </section>
@@ -1206,17 +1316,23 @@
     </p>
   </footer>
 
-  <!-- ══ MODAL AGREGAR TAREA ══ -->
-  <div class="modal-backdrop" id="modal" onclick="closeModalOutside(event)">
+  <!-- ══ MODAL NUEVA TAREA (solo admin) ══ -->
+  <div class="modal-backdrop" id="task-modal" onclick="closeModalOutside(event,'task-modal')">
     <div class="modal">
       <div class="modal-header">
         <h3>📋 Nueva Tarea</h3>
-        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        <button class="modal-close" onclick="closeModal('task-modal')"><i class="fas fa-times"></i></button>
       </div>
-
+      <div class="form-group">
+        <label>Tipo *</label>
+        <select class="form-control" id="task-tipo">
+          <option value="UCE">UCE</option>
+          <option value="Eje Policial">Eje Policial</option>
+        </select>
+      </div>
       <div class="form-group">
         <label>Materia *</label>
-        <input type="text" class="form-control" id="task-subject" placeholder="Ej: Matemática, Lenguaje...">
+        <input type="text" class="form-control" id="task-subject" placeholder="Ej: Matemática, Táctica...">
       </div>
       <div class="form-group">
         <label>Descripción de la Tarea *</label>
@@ -1236,9 +1352,8 @@
           </select>
         </div>
       </div>
-
       <div style="display:flex; gap:12px; margin-top:28px;">
-        <button class="btn btn-outline" style="flex:1" onclick="closeModal()">Cancelar</button>
+        <button class="btn btn-outline" style="flex:1" onclick="closeModal('task-modal')">Cancelar</button>
         <button class="btn btn-gold" style="flex:2" onclick="saveTask()">
           <i class="fas fa-save"></i> Guardar Tarea
         </button>
@@ -1246,11 +1361,72 @@
     </div>
   </div>
 
+  <!-- ══ MODAL LOGIN ADMIN ══ -->
+  <div class="modal-backdrop" id="login-modal" onclick="closeModalOutside(event,'login-modal')">
+    <div class="modal">
+      <div class="login-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="modal-header" style="margin-bottom:16px;">
+        <h3>Acceso Administrador</h3>
+        <button class="modal-close" onclick="closeModal('login-modal')"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" class="form-control" id="admin-password" placeholder="Contraseña de admin"
+          onkeydown="if(event.key==='Enter') checkLogin()">
+      </div>
+      <p class="login-error" id="login-error">Contraseña incorrecta. Intenta de nuevo.</p>
+      <button class="btn btn-gold" style="width:100%" onclick="checkLogin()">
+        <i class="fas fa-unlock"></i> Ingresar
+      </button>
+    </div>
+  </div>
+
   <!-- ══ TOAST ══ -->
   <div class="toast" id="toast"></div>
 
   <script>
-    /* ── NAV ── */
+    /* ════════════════════════════════════════
+       ADMIN AUTH
+       Cambia esta contraseña por la que quieras
+    ════════════════════════════════════════ */
+    const ADMIN_PASS = 'seccionE2026';
+
+    let isAdmin = false;
+
+    function openLoginModal() {
+      if (isAdmin) { logout(); return; }
+      document.getElementById('admin-password').value = '';
+      document.getElementById('login-error').classList.remove('show');
+      openModal('login-modal');
+    }
+
+    function checkLogin() {
+      const pw = document.getElementById('admin-password').value;
+      if (pw === ADMIN_PASS) {
+        isAdmin = true;
+        document.body.classList.add('admin-mode');
+        document.getElementById('admin-login-btn').innerHTML = '<i class="fas fa-lock-open"></i>';
+        closeModal('login-modal');
+        renderTasks();
+        showToast('Modo administrador activado', 'success');
+      } else {
+        document.getElementById('login-error').classList.add('show');
+        document.getElementById('admin-password').value = '';
+        document.getElementById('admin-password').focus();
+      }
+    }
+
+    function logout() {
+      isAdmin = false;
+      document.body.classList.remove('admin-mode');
+      document.getElementById('admin-login-btn').innerHTML = '<i class="fas fa-lock"></i>';
+      renderTasks();
+      showToast('Sesión de administrador cerrada', 'danger');
+    }
+
+    /* ════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════ */
     function toggleMenu() {
       document.getElementById('main-nav').classList.toggle('open');
     }
@@ -1258,14 +1434,18 @@
       a.addEventListener('click', () => document.getElementById('main-nav').classList.remove('open'));
     });
 
-    /* ── TABS ── */
+    /* ════════════════════════════════════════
+       TABS
+    ════════════════════════════════════════ */
     function switchTab(idx) {
       document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
       document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
     }
 
-    /* ── TASKS (localStorage) ── */
-    const STORAGE_KEY = 'seccion_e_tasks';
+    /* ════════════════════════════════════════
+       TASKS
+    ════════════════════════════════════════ */
+    const STORAGE_KEY = 'seccion_e_tasks_v2';
 
     let tasks = [];
     try {
@@ -1275,9 +1455,10 @@
 
     function defaultTasks() {
       return [
-        { id: 1, subject: 'Matemática', desc: 'Resolver ejercicios página 25', date: '2026-06-12', status: 'Pendiente' },
-        { id: 2, subject: 'Lenguaje', desc: 'Leer capítulo 3', date: '2026-06-13', status: 'En proceso' },
-        { id: 3, subject: 'Inglés', desc: 'Aprender vocabulario', date: '2026-06-14', status: 'Completado' },
+        { id: 1, tipo: 'UCE', subject: 'Matemática', desc: 'Resolver ejercicios página 25', date: '2026-06-12', status: 'Pendiente' },
+        { id: 2, tipo: 'UCE', subject: 'Lenguaje', desc: 'Leer capítulo 3', date: '2026-06-13', status: 'En proceso' },
+        { id: 3, tipo: 'Eje Policial', subject: 'Táctica', desc: 'Memorizar formaciones básicas', date: '2026-06-14', status: 'Completado' },
+        { id: 4, tipo: 'Eje Policial', subject: 'Protocolo', desc: 'Estudio del reglamento cap. 2', date: '2026-05-30', status: 'Pendiente' },
       ];
     }
 
@@ -1285,12 +1466,25 @@
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); } catch (e) { }
     }
 
-    let currentFilter = 'all';
+    let filterStatus = 'all';
+    let filterTipo = 'all';
+
+    /* Devuelve true si la fecha ya pasó HOY y la tarea no está completada */
+    function isVencida(task) {
+      if (task.status === 'Completado') return false;
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const due = new Date(task.date + 'T00:00:00');
+      return due < today;
+    }
 
     function renderTasks() {
       const tbody = document.getElementById('task-tbody');
       const empty = document.getElementById('empty-state');
-      const filtered = currentFilter === 'all' ? tasks : tasks.filter(t => t.status === currentFilter);
+
+      // apply filters
+      let filtered = tasks;
+      if (filterStatus !== 'all') filtered = filtered.filter(t => t.status === filterStatus);
+      if (filterTipo !== 'all') filtered = filtered.filter(t => t.tipo === filterTipo);
 
       if (!filtered.length) {
         tbody.innerHTML = '';
@@ -1299,30 +1493,49 @@
       }
       empty.style.display = 'none';
 
+      const statusBadge = s => ({
+        'Pendiente': '<span class="badge badge-danger">Pendiente</span>',
+        'En proceso': '<span class="badge badge-warning">En proceso</span>',
+        'Completado': '<span class="badge badge-success">Completado</span>',
+      }[s] || `<span class="badge badge-info">${s}</span>`);
+
+      const tipoBadge = t => t === 'UCE'
+        ? '<span class="badge badge-uce"><i class="fas fa-university"></i> UCE</span>'
+        : '<span class="badge badge-policial"><i class="fas fa-shield-alt"></i> Eje Policial</span>';
+
       tbody.innerHTML = filtered.map(t => {
-        const statusBadge = {
-          'Pendiente': '<span class="badge badge-danger">Pendiente</span>',
-          'En proceso': '<span class="badge badge-warning">En proceso</span>',
-          'Completado': '<span class="badge badge-success">Completado</span>',
-        }[t.status] || `<span class="badge badge-info">${t.status}</span>`;
+        const vencida = isVencida(t);
+        const dateStr = t.date
+          ? new Date(t.date + 'T00:00:00').toLocaleDateString('es-EC', { day: '2-digit', month: 'short', year: 'numeric' })
+          : '—';
 
-        const dateStr = t.date ? new Date(t.date + 'T00:00:00').toLocaleDateString('es-EC', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
+        const dateCell = vencida
+          ? `<span class="date-vencida"><i class="fas fa-exclamation-circle"></i>${dateStr} · Vencida</span>`
+          : dateStr;
 
-        return `<tr>
+        // Acciones: solo admin ve cambio de estado + eliminar
+        const accionesCell = isAdmin
+          ? `<td class="admin-only" style="display:table-cell">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <select class="form-control" style="padding:4px 8px;font-size:0.75rem;width:auto;"
+                onchange="updateStatus(${t.id}, this.value)">
+                ${['Pendiente', 'En proceso', 'Completado'].map(s =>
+            `<option${s === t.status ? ' selected' : ''}>${s}</option>`).join('')}
+              </select>
+              <button class="btn btn-sm btn-danger" onclick="deleteTask(${t.id})" title="Eliminar">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>`
+          : `<td class="admin-only" style="display:none"></td>`;
+
+        return `<tr class="${vencida ? 'row-vencida' : ''}">
+        <td>${tipoBadge(t.tipo)}</td>
         <td><strong>${t.subject}</strong></td>
         <td>${t.desc}</td>
-        <td>${dateStr}</td>
-        <td>${statusBadge}</td>
-        <td>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            <select class="form-control" style="padding:4px 8px;font-size:0.75rem;width:auto;" onchange="updateStatus(${t.id}, this.value)">
-              ${['Pendiente', 'En proceso', 'Completado'].map(s => `<option${s === t.status ? ' selected' : ''}>${s}</option>`).join('')}
-            </select>
-            <button class="btn btn-sm btn-danger" onclick="deleteTask(${t.id})" title="Eliminar">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        </td>
+        <td>${dateCell}</td>
+        <td>${statusBadge(t.status)}</td>
+        ${accionesCell}
       </tr>`;
       }).join('');
     }
@@ -1334,31 +1547,69 @@
 
     function deleteTask(id) {
       tasks = tasks.filter(t => t.id !== id);
-      saveTasks();
-      renderTasks();
+      saveTasks(); renderTasks();
       showToast('Tarea eliminada', 'danger');
     }
 
-    /* ── MODAL ── */
-    function openModal() {
-      document.getElementById('task-date').value = new Date().toISOString().split('T')[0];
-      document.getElementById('modal').classList.add('open');
+    /* ── Filtros de estado ── */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterStatus = btn.dataset.filterStatus;
+        renderTasks();
+      });
+    });
+
+    /* ── Filtros de tipo ── */
+    document.querySelectorAll('.filter-tipo').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tipo').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterTipo = btn.dataset.filterTipo;
+        renderTasks();
+      });
+    });
+
+    /* ════════════════════════════════════════
+       MODALS
+    ════════════════════════════════════════ */
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
     }
-    function closeModal() { document.getElementById('modal').classList.remove('open'); }
-    function closeModalOutside(e) { if (e.target.id === 'modal') closeModal(); }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+    function closeModalOutside(e, id) {
+      if (e.target.id === id) closeModal(id);
+    }
+
+    /* shorthand para modal de tarea */
+    function openTaskModal() {
+      document.getElementById('task-date').value = new Date().toISOString().split('T')[0];
+      openModal('task-modal');
+    }
+
+    /* botón "Nueva Tarea" llama esto */
+    window.openModal = function (id) {
+      if (id) { document.getElementById(id).classList.add('open'); return; }
+      openTaskModal();
+    };
 
     function saveTask() {
+      const tipo = document.getElementById('task-tipo').value;
       const subject = document.getElementById('task-subject').value.trim();
       const desc = document.getElementById('task-desc').value.trim();
       const date = document.getElementById('task-date').value;
       const status = document.getElementById('task-status').value;
 
-      if (!subject || !desc || !date) { showToast('Completa todos los campos requeridos', 'danger'); return; }
+      if (!subject || !desc || !date) {
+        showToast('Completa todos los campos requeridos', 'danger'); return;
+      }
 
-      tasks.push({ id: Date.now(), subject, desc, date, status });
-      saveTasks();
-      renderTasks();
-      closeModal();
+      tasks.push({ id: Date.now(), tipo, subject, desc, date, status });
+      saveTasks(); renderTasks();
+      closeModal('task-modal');
       showToast('¡Tarea agregada correctamente!', 'success');
 
       document.getElementById('task-subject').value = '';
@@ -1366,27 +1617,21 @@
       document.getElementById('task-status').value = 'Pendiente';
     }
 
-    /* ── FILTERS ── */
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        renderTasks();
-      });
-    });
-
-    /* ── TOAST ── */
+    /* ════════════════════════════════════════
+       TOAST
+    ════════════════════════════════════════ */
     let toastTimer;
     function showToast(msg, type = 'success') {
       const t = document.getElementById('toast');
       t.textContent = msg;
       t.className = `toast show ${type}`;
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
     }
 
-    /* ── WHATSAPP ── */
+    /* ════════════════════════════════════════
+       WHATSAPP
+    ════════════════════════════════════════ */
     function sendWhatsapp() {
       const name = document.getElementById('contact-name').value.trim();
       const msg = document.getElementById('contact-msg').value.trim();
@@ -1395,13 +1640,13 @@
       window.open(url, '_blank');
     }
 
-    /* ── SCROLL ACTIVE NAV ── */
+    /* ════════════════════════════════════════
+       SCROLL ACTIVE NAV
+    ════════════════════════════════════════ */
     const sections = document.querySelectorAll('[id^="section"]');
     window.addEventListener('scroll', () => {
       let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 100) current = s.id;
-      });
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
       document.querySelectorAll('#main-nav a').forEach(a => {
         a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
       });
